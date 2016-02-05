@@ -21,12 +21,18 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Associate Appraisals", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @if (User.IsInRole("dgslaw\\ems_owner"))
+                {
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Administration", "Administration", "Home")</li>
+                    </ul>
+                }
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                 </ul>
-                <p class="nav navbar-text navbar-right">Hello, @AssociateAppraisals.Helpers.Helpers.GetAssociateFirstNameFromIdentity(User.Identity)!</p>
+                <p class="nav navbar-text navbar-right">Hello, @ViewBag.LoggedInUser!</p>
             </div>
         </div>
     </div>

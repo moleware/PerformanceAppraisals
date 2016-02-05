@@ -41,6 +41,8 @@ namespace AssociateAppraisals.Web.Controllers
                 }
             }
 
+            ViewBag.LoggedInUser = Helpers.Helpers.GetAssociateFirstNameFromIdentity(User.Identity);
+
             viewModelAppraisals = Mapper.Map<IEnumerable<Appraisal>, IEnumerable<AppraisalViewModel>>(appraisals);
             return View(viewModelAppraisals);
         }
