@@ -17,10 +17,12 @@ namespace AssociateAppraisals.Web.Mappings
 
         protected override void Configure()
         {
-            Mapper.CreateMap<AppraisalFormViewModel, Appraisal>()
-                .ForMember(g => g.ReviewYear, map => map.MapFrom(vm => vm.ReviewYear))
-                .ForMember(g => g.StartDate, map => map.MapFrom(vm => vm.StartDate))
-                .ForMember(g => g.EndDate, map => map.MapFrom(vm => vm.EndDate));
+            Mapper.CreateMap<AppraisalQuestionFormViewModel, AppraisalQuestion>()
+                .ForMember(g => g.AppraisalId, map => map.MapFrom(vm => vm.AppraisalId))
+                .ForMember(g => g.AppraisalQuestionGroupId, map => map.MapFrom(vm => vm.AppraisalQuestionGroupId))
+                .ForMember(g => g.AppraisalQuestionTypeId, map => map.MapFrom(vm => vm.AppraisalQuestionTypeId))
+                .ForMember(g => g.Question, map => map.MapFrom(vm => vm.Question))
+                .ForMember(g => g.QuestionNumber, map => map.MapFrom(vm => vm.QuestionNumber));
         }
     }
 }

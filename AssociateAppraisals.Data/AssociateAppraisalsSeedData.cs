@@ -40,42 +40,42 @@ namespace AssociateAppraisals.Data
             return new List<AppraisalQuestion>
             {
                 new AppraisalQuestion {
-                    AppraisalId = 0,
+                    AppraisalId = 1,
                     AppraisalQuestionGroupId = 0,
                     AppraisalQuestionTypeId = 0,
                     Question = "What is your favorite color?",
                     QuestionNumber = 1
                 },
                 new AppraisalQuestion {
-                    AppraisalId = 0,
+                    AppraisalId = 1,
                     AppraisalQuestionGroupId = 0,
                     AppraisalQuestionTypeId = 0,
                     Question = "What is the meaning of life?",
                     QuestionNumber = 2
                 },
                 new AppraisalQuestion {
-                    AppraisalId = 0,
+                    AppraisalId = 1,
                     AppraisalQuestionGroupId = 0,
                     AppraisalQuestionTypeId = 0,
                     Question = "What is the purpose of this question?",
                     QuestionNumber = 3
                 },
                  new AppraisalQuestion {
-                    AppraisalId = 1,
+                    AppraisalId = 2,
                     AppraisalQuestionGroupId = 0,
                     AppraisalQuestionTypeId = 0,
                     Question = "What is your favorite color?",
                     QuestionNumber = 1
                 },
                 new AppraisalQuestion {
-                    AppraisalId = 1,
+                    AppraisalId = 2,
                     AppraisalQuestionGroupId = 0,
                     AppraisalQuestionTypeId = 0,
                     Question = "What is the meaning of life?",
                     QuestionNumber = 2
                 },
                 new AppraisalQuestion {
-                    AppraisalId = 1,
+                    AppraisalId = 2,
                     AppraisalQuestionGroupId = 0,
                     AppraisalQuestionTypeId = 0,
                     Question = "What is the purpose of this question?",

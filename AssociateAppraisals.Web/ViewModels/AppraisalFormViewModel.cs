@@ -5,11 +5,13 @@ using System.Web;
 
 namespace AssociateAppraisals.Web.ViewModels
 {
-    public class AppraisalFormViewModel
+    public class AppraisalQuestionFormViewModel
     {
-      //  public HttpPostedFileBase File { get; set; }
-        public int ReviewYear { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        //  public HttpPostedFileBase File { get; set; }
+        public int AppraisalId { get; set; }
+        public int AppraisalQuestionGroupId { get; set; }
+        public int AppraisalQuestionTypeId { get; set; }
+        public string Question { get; set; }
+        public int QuestionNumber { get; set; }
     }
 }

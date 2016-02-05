@@ -12,10 +12,10 @@ namespace AssociateAppraisals.Web.Mappings
     {
         public static void Configure()
         {
-            Mapper.Initialize(x =>
+            var config = new MapperConfiguration(cfg =>
             {
-                x.AddProfile<DomainToViewModelMappingProfile>();
-                x.AddProfile<ViewModelToDomainMappingProfile>();
+                cfg.AddProfile<DomainToViewModelMappingProfile>();
+                cfg.AddProfile<ViewModelToDomainMappingProfile>();
             });
         }
     }
