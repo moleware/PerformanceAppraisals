@@ -15,7 +15,6 @@ namespace AssociateAppraisals.Web
         {
             // Initialize database with dummy values
             //   System.Data.Entity.Database.SetInitializer(new AssociateAppraisalsSeedData());
-
             System.Data.Entity.Database.SetInitializer<AssociateAppraisalsEntities>(null);
 
             AreaRegistration.RegisterAllAreas();

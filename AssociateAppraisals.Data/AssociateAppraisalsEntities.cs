@@ -10,7 +10,7 @@ namespace AssociateAppraisals.Data
 {
     public class AssociateAppraisalsEntities : DbContext
     {
-        public AssociateAppraisalsEntities() : base("AssociateAppraisals") { }
+        public AssociateAppraisalsEntities() : base("name=AssociateAppraisalsEntities") { }
 
         public DbSet<Appraisal> Appraisals { get; set; }
         public DbSet<AppraisalQuestion> AppraisalQuestions { get; set; }

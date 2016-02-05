@@ -10,7 +10,7 @@ namespace DGS_Enterprise.Data
 {
     public class DGS_EnterpriseEntities : DbContext
     {
-        public DGS_EnterpriseEntities() : base("DGS_Enterprise") { }
+        public DGS_EnterpriseEntities() : base("name=DGS_EnterpriseEntities") { }
 
         public DbSet<Employee> Employees { get; set; }
 

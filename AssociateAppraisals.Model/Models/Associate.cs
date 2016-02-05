@@ -12,10 +12,5 @@ namespace AssociateAppraisals.Model
         public string Login { get; set; }
 
    //     public virtual List<AssociateWork> Work { get; set; }
-
-        public Associate()
-        {
-            // Nothing to do here yet.
-        }
     }
 }

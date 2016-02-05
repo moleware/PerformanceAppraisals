@@ -158,6 +158,8 @@
     <Compile Include="ViewModels\AppraisalFormViewModel.cs" />
     <Compile Include="ViewModels\AppraisalQuestionFormViewModel.cs" />
     <Compile Include="ViewModels\AppraisalQuestionViewModel.cs" />
+    <Compile Include="ViewModels\EmployeeViewModel.cs" />
+    <Compile Include="ViewModels\AssociateViewModel.cs" />
     <Compile Include="ViewModels\AppraisalViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

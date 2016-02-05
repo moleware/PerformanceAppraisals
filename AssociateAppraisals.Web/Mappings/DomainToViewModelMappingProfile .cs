@@ -5,6 +5,7 @@ using System.Web;
 using AutoMapper;
 using AssociateAppraisals.Model;
 using AssociateAppraisals.Web.ViewModels;
+using DGS_Enterprise.Model;
 
 namespace AssociateAppraisals.Web.Mappings
 {
@@ -19,6 +20,7 @@ namespace AssociateAppraisals.Web.Mappings
         {
             Mapper.CreateMap<AppraisalQuestion, AppraisalQuestionViewModel>();
             Mapper.CreateMap<Appraisal, AppraisalViewModel>();
+            Mapper.CreateMap<Associate, AssociateViewModel>();
 
 
             /*

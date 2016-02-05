@@ -90,7 +90,7 @@ namespace AssociateAppraisals.Helpers
         {
             using (AssociateAppraisalsEntities dbAss = new AssociateAppraisalsEntities())
             {
-                return dbAss.Associates.Where(a => a.Login == login).FirstOrDefault();
+                return dbAss.Associates.FirstOrDefault(a => a.Login == login);
             }
         }
         internal static string GetLoginFromIdentity(IIdentity i)
