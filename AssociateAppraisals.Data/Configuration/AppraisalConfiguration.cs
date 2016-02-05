@@ -13,7 +13,7 @@ namespace AssociateAppraisals.Data
     {
         public AppraisalConfiguration()
         {
-            ToTable("Appraisals");
+            ToTable("Appraisal");
             Property(a => a.ReviewYear).IsRequired();
             Property(a => a.StartDate).IsRequired();
             Property(a => a.EndDate).IsRequired();

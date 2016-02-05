@@ -150,6 +150,7 @@
     <Compile Include="Mappings\ViewModelToDomainMappingProfile .cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AppraisalFormViewModel.cs" />
+    <Compile Include="ViewModels\AppraisalQuestionFormViewModel.cs" />
     <Compile Include="ViewModels\AppraisalQuestionViewModel.cs" />
     <Compile Include="ViewModels\AppraisalViewModel.cs" />
   </ItemGroup>
@@ -201,6 +202,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Appraisal.cshtml" />
+    <Content Include="Views\Shared\Question.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

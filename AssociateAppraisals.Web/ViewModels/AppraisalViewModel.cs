@@ -12,6 +12,6 @@ namespace AssociateAppraisals.Web.ViewModels
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
-        public List<AppraisalQuestionViewModel> Questions { get; set; }
+        public virtual List<AppraisalQuestionViewModel> Questions { get; set; }
     }
 }

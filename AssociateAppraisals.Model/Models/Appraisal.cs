@@ -17,7 +17,8 @@ namespace AssociateAppraisals.Model
 
         public Appraisal()
         {
-            // Nothing to do here yet...
+            // Set the date as this year by default
+       //     ReviewYear = DateTime.Now.Year;
         }
     }
 }

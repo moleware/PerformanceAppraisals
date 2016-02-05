@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using AssociateAppraisals.Model;
 
 namespace AssociateAppraisals.Web.ViewModels
 {
-    public class AppraisalQuestionFormViewModel
+    public class AppraisalFormViewModel
     {
-        //  public HttpPostedFileBase File { get; set; }
-        public int AppraisalId { get; set; }
-        public int AppraisalQuestionGroupId { get; set; }
-        public int AppraisalQuestionTypeId { get; set; }
-        public string Question { get; set; }
-        public int QuestionNumber { get; set; }
+        public int ReviewYear { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+
+        public virtual List<AppraisalQuestion> Questions { get; set; }
     }
 }
