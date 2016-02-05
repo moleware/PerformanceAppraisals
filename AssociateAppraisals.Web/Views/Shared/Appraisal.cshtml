@@ -1,0 +1,18 @@
+﻿
+@model AssociateAppraisals.Web.ViewModels.AppraisalViewModel
+
+<div class="panel-body">
+    <div class="media">
+        <a class="pull-left" href="#">
+            <img class="media-object" src="../../images/@Model.Image" />
+        </a>
+        <div class="media-body">
+            <h3 class="media-heading">
+                Appraisal @Model.AppraisalId
+            </h3>
+            <p>Review Year: @Model.ReviewYear</p>
+            <p>Start Date: @Model.StartDate.ToString()</p>
+            <p>End Date: @Model.ReviewYear.ToString()</p>
+        </div>
+    </div>
+</div>
