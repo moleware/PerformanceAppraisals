@@ -3,10 +3,24 @@
 
 <div class="panel-body">
     <div class="media">
-        <div class="media-body">
-            <h3 class="media-heading">
-                Appraisal @Model.AppraisalId
-            </h3>
+        <div class="media-body clickablediv">
+            @if (User.IsInRole("dgslaw\\ems_owner"))
+            {
+                <a href="@Url.Action("EditAppraisalQuestions","Administration")">
+                    <h3 class="media-heading">
+                        Appraisal @Model.AppraisalId
+                    </h3>
+                </a>
+            }
+            else
+            {
+                <a href="@Url.Action("EditAppraisal","Home")">
+            
+                    <h3 class="media-heading">
+                        Appraisal @Model.AppraisalId
+                    </h3>
+                </a>
+            }
             <p>Review Year: @Model.ReviewYear</p>
             <p>Start Date: @Model.StartDate.ToString()</p>
             <p>End Date: @Model.ReviewYear.ToString()</p>

@@ -1,14 +1,15 @@
-﻿@model IEnumerable<AssociateAppraisals.Web.ViewModels.AppraisalViewModel>
+﻿@model IEnumerable<AssociateAppraisals.Web.ViewModels.AppraisalQuestionViewModel>
 @{
-    ViewBag.Title = "Associate Appraisals";
+    ViewBag.Title = "Associate Appraisals Administration";
 }
 
 <div class="jumbotron">
     <h1>@ViewBag.Title</h1>
-    <p class="lead">This is the main interface for Associate Appraisals.</p>
+    <p class="lead">This is where administrators can edit appraisal questions.</p>
 </div>
 
 <div class="row">
+    <h3>Appraisal @Model.First().AppraisalId</h3>
     @foreach (var item in Model)
     {
         <div class="panel panel-default">

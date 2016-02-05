@@ -47,6 +47,28 @@ namespace AssociateAppraisals.Web.Controllers
             return View(viewModelAppraisals);
         }
 
+        // GET: EditAppraisal
+      /*  public ActionResult EditAppraisal(int appraisalId)
+        {
+            IEnumerable<AppraisalViewModel> viewModelAppraisals;
+            IEnumerable<Appraisal> appraisals;
+            IEnumerable<AppraisalQuestion> questions;
+
+            // This seems wrong.... It is known that we'll only get one result back, so why loop?
+            appraisals = appraisalService.GetAppraisals().Where(a => a.AppraisalId == appraisalId);
+            foreach (Appraisal a in appraisals)
+            {
+                questions = appraisalQuestionService.GetAppraisalQuestions(a.AppraisalId);
+                foreach (AppraisalQuestion q in questions)
+                {
+                    a.Questions.Add(q);
+                }
+            }
+
+            Associate ass = Helpers.Helpers.GetAssociateFromIdentity(User.Identity);
+            
+            viewModelAppraisals = Mapper.Map<IEnumerable<Appraisal>, IEnumerable<AppraisalViewModel>>(appraisal);            
+        }*/
 
 
     /*  We can worry about searching and filtering once the app works.

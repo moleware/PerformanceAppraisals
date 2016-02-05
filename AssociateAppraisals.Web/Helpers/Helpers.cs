@@ -79,6 +79,10 @@ namespace AssociateAppraisals.Helpers
             }
             return "Unknown User";
         }
+        public static Associate GetAssociateFromIdentity(IIdentity i)
+        {
+            return GetAssociateFromLogin(GetLoginFromIdentity(i));
+        }
         internal static Employee GetEmployeeFromLogin(string login)
         {
             using (DGS_EnterpriseEntities dbDGS = new DGS_EnterpriseEntities())

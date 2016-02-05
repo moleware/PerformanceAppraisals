@@ -10,8 +10,7 @@ namespace AssociateAppraisals.Web.ViewModels
     public class AppraisalViewModel
     {
         #region Extra View Properties
-        // I don't think this is where this should go...
-   //     public Employee LoggedInEmployee { get; set; }
+
         #endregion
 
         #region Database Fields
