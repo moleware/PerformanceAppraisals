@@ -137,6 +137,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\GlobalVariables.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GlobalVariables.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\Bootstrapper.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -145,6 +150,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
     <Compile Include="Mappings\DomainToViewModelMappingProfile .cs" />
     <Compile Include="Mappings\ViewModelToDomainMappingProfile .cs" />
@@ -227,9 +233,27 @@
       <Project>{2d523edb-8973-4e06-bee7-25f74d45ea53}</Project>
       <Name>AssociateAppraisals.Service</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DGS_Enterprise.Data\DGS_Enterprise.Data.csproj">
+      <Project>{fc12e44a-29bc-4d46-9e9d-a27aea925ca3}</Project>
+      <Name>DGS_Enterprise.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DGS_Enterprise.Model\DGS_Enterprise.Model.csproj">
+      <Project>{faf50096-15ff-4f17-a32a-1df89c3dd33b}</Project>
+      <Name>DGS_Enterprise.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DGS_Enterprise.Service\DGS_Enterprise.Service.csproj">
+      <Project>{deb6cc4f-63f9-4c45-ab23-c1775f048772}</Project>
+      <Name>DGS_Enterprise.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\GlobalVariables.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>GlobalVariables.Designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

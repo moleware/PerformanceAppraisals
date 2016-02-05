@@ -16,6 +16,7 @@ namespace AssociateAppraisals.Data
         public DbSet<AppraisalQuestion> AppraisalQuestions { get; set; }
         public DbSet<AppraisalQuestionGroup> AppraisalQuestionGroups { get; set; }
         public DbSet<AppraisalQuestionType> AppraisalQuestionTypes { get; set; }
+        public DbSet<Associate> Associates { get; set; }
 
         public virtual void Commit()
         {
@@ -28,6 +29,7 @@ namespace AssociateAppraisals.Data
             modelBuilder.Configurations.Add(new AppraisalQuestionConfiguration());
             modelBuilder.Configurations.Add(new AppraisalQuestionGroupConfiguration());
             modelBuilder.Configurations.Add(new AppraisalQuestionTypeConfiguration());
+            modelBuilder.Configurations.Add(new AssociateConfiguration());
         }
     }
 }

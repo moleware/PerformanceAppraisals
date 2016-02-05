@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppraisalQuestionService.cs" />
+    <Compile Include="AssociateService.cs" />
     <Compile Include="AppraisalService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

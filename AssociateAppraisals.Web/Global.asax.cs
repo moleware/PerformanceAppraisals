@@ -13,8 +13,10 @@ namespace AssociateAppraisals.Web
     {
         protected void Application_Start()
         {
-            // Initialize database
-            System.Data.Entity.Database.SetInitializer(new AssociateAppraisalsSeedData());
+            // Initialize database with dummy values
+            //   System.Data.Entity.Database.SetInitializer(new AssociateAppraisalsSeedData());
+
+            System.Data.Entity.Database.SetInitializer<AssociateAppraisalsEntities>(null);
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

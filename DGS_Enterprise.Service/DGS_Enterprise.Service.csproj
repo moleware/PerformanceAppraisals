@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8CF7E123-C177-4C9A-82B1-F34EFB14D7E5}</ProjectGuid>
+    <ProjectGuid>{DEB6CC4F-63F9-4C45-AB23-C1775F048772}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AssociateAppraisals.Model</RootNamespace>
-    <AssemblyName>AssociateAppraisals.Model</AssemblyName>
+    <RootNamespace>DGS_Enterprise.Service</RootNamespace>
+    <AssemblyName>DGS_Enterprise.Service</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,12 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Associate.cs" />
-    <Compile Include="Models\Appraisal.cs" />
-    <Compile Include="Models\AppraisalQuestion.cs" />
-    <Compile Include="Models\AppraisalQuestionGroup.cs" />
-    <Compile Include="Models\AppraisalQuestionType.cs" />
+    <Compile Include="EmployeeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DGS_Enterprise.Data\DGS_Enterprise.Data.csproj">
+      <Project>{fc12e44a-29bc-4d46-9e9d-a27aea925ca3}</Project>
+      <Name>DGS_Enterprise.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DGS_Enterprise.Model\DGS_Enterprise.Model.csproj">
+      <Project>{faf50096-15ff-4f17-a32a-1df89c3dd33b}</Project>
+      <Name>DGS_Enterprise.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
