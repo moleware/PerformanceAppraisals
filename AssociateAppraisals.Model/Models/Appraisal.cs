@@ -14,11 +14,6 @@ namespace AssociateAppraisals.Model
         public DateTime EndDate { get; set; }
 
         public virtual List<AppraisalQuestion> Questions { get; set; }
-
-        public Appraisal()
-        {
-            // Set the date as this year by default
-       //     ReviewYear = DateTime.Now.Year;
-        }
+        public virtual List<AssociateAppraisal> AssociateAppraisals { get; set; }
     }
 }

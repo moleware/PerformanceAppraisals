@@ -12,10 +12,17 @@ namespace AssociateAppraisals.Data.Repositories
     public class AppraisalQuestionRepository : RepositoryBase<AppraisalQuestion>, IAppraisalQuestionRepository
     {
         public AppraisalQuestionRepository(IDbFactory dbFactory) : base(dbFactory) {} 
-        public AppraisalQuestion GetAppraisalQuestionsByAppraisalId(int appraisalId)
+        public AppraisalQuestion GetAppraisalQuestions(int appraisalId)
         {
-            var question = this.DbContext.AppraisalQuestions.Where(q => q.AppraisalId == appraisalId).FirstOrDefault();
-            return question;
+            return this.DbContext.AppraisalQuestions.Where(q => q.AppraisalId == appraisalId).FirstOrDefault();
+        }
+        public AppraisalQuestion GetAppraisalQuestion(int appraisalQuestionId)
+        {
+            return this.DbContext.AppraisalQuestions.Where(q => q.AppraisalQuestionId == appraisalQuestionId).FirstOrDefault();
+        }
+        public AppraisalQuestion GetAppraisalQuestion(int appraisalId, int questionNumber)
+        {
+            return this.DbContext.AppraisalQuestions.Where(q => (q.AppraisalId == appraisalId) && (q.QuestionNumber == questionNumber)).FirstOrDefault();
         }
         public override void Update(AppraisalQuestion entity)
         {
@@ -26,6 +33,8 @@ namespace AssociateAppraisals.Data.Repositories
 
     public interface IAppraisalQuestionRepository : IRepository<AppraisalQuestion>
     {
-        AppraisalQuestion GetAppraisalQuestionsByAppraisalId(int appraisalId);
+        AppraisalQuestion GetAppraisalQuestions(int appraisalId);
+        AppraisalQuestion GetAppraisalQuestion(int appraisalQuestionId);
+        AppraisalQuestion GetAppraisalQuestion(int appraisalId, int questionNumber);
     }
 }

@@ -18,8 +18,7 @@ namespace AssociateAppraisals.Web.Mappings
 
         protected override void Configure()
         {
-            
-            var AQconfig = new MapperConfiguration(cfg => {
+            var appraisalQuestionConfig = new MapperConfiguration(cfg => {
                 cfg.CreateMap<AppraisalQuestionFormViewModel, AppraisalQuestion>()
                     .ForMember(g => g.AppraisalId, map => map.MapFrom(vm => vm.AppraisalId))
                     .ForMember(g => g.AppraisalQuestionGroupId, map => map.MapFrom(vm => vm.AppraisalQuestionGroupId))
@@ -28,21 +27,13 @@ namespace AssociateAppraisals.Web.Mappings
                     .ForMember(g => g.QuestionNumber, map => map.MapFrom(vm => vm.QuestionNumber));
             });
 
-            var Aconfig = new MapperConfiguration(cfg => {
+            var appraisalConfig = new MapperConfiguration(cfg => {
                 cfg.CreateMap<AppraisalFormViewModel, Appraisal>()
                     .ForMember(g => g.ReviewYear, map => map.MapFrom(vm => vm.ReviewYear))
                     .ForMember(g => g.StartDate, map => map.MapFrom(vm => vm.StartDate))
                     .ForMember(g => g.EndDate, map => map.MapFrom(vm => vm.EndDate))
                     .ForMember(g => g.Questions, map => map.MapFrom(vm => vm.Questions));
             });
-
-    /*        var Econfig = new MapperConfiguration(cfg => {
-                cfg.CreateMap<EmployeeViewModel, Employee>()
-                    .ForMember(g => g., map => map.MapFrom(vm => vm.ReviewYear))
-                    .ForMember(g => g.StartDate, map => map.MapFrom(vm => vm.StartDate))
-                    .ForMember(g => g.EndDate, map => map.MapFrom(vm => vm.EndDate))
-                    .ForMember(g => g.Questions, map => map.MapFrom(vm => vm.Questions));
-            });*/
         }
     }
 }

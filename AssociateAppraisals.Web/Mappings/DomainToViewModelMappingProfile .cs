@@ -18,9 +18,10 @@ namespace AssociateAppraisals.Web.Mappings
 
         protected override void Configure()
         {
-            Mapper.CreateMap<AppraisalQuestion, AppraisalQuestionViewModel>();
             Mapper.CreateMap<Appraisal, AppraisalViewModel>();
+            Mapper.CreateMap<AppraisalQuestion, AppraisalQuestionViewModel>();
             Mapper.CreateMap<Associate, AssociateViewModel>();
+            Mapper.CreateMap<AssociateAppraisal, AssociateAppraisalViewModel>();        
 
 
             /*

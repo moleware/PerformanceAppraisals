@@ -16,5 +16,7 @@ namespace AssociateAppraisals.Model
 
         public int AppraisalId { get; set; }
         public Appraisal Appraisal { get; set; }
+
+        public AssociateAppraisalQuestionAnswer AssociateAppraisalQuestionAnswer { get; set; }
     }
 }

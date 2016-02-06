@@ -14,6 +14,7 @@ namespace AssociateAppraisals.Service
     {
         IEnumerable<AppraisalQuestion> GetAppraisalQuestions(int appraisalId);
         AppraisalQuestion GetAppraisalQuestion(int appraisalQuestionId);
+        AppraisalQuestion GetAppraisalQuestion(int appraisalId, int questionNumber);
         void CreateQuestion(AppraisalQuestion appraisalQuestion);
         void SaveAppraisalQuestion();
     }
@@ -38,16 +39,14 @@ namespace AssociateAppraisals.Service
             return questions;
         }
 
-     /*   public IEnumerable<Appraisal> GetCategoryGadgets(int appraisalId)
-        {
-            var question = appraisalQuestionsRepository.GetAppraisalQuestionsByAppraisalId(appraisalId);
-            return question .Where(g => g.Name.ToLower().Contains(gadgetName.ToLower().Trim()));
-        }*/
-
         public AppraisalQuestion GetAppraisalQuestion(int questionId)
         {
-            var question = appraisalQuestionsRepository.GetById(questionId);
-            return question;
+            return appraisalQuestionsRepository.GetById(questionId);
+        }
+
+        public AppraisalQuestion GetAppraisalQuestion(int appraisalId, int questionNumber)
+        {
+            return appraisalQuestionsRepository.GetAppraisalQuestion(appraisalId, questionNumber);
         }
 
         public void CreateQuestion(AppraisalQuestion appraisalQuestion)

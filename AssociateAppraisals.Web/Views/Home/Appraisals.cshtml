@@ -1,0 +1,20 @@
+﻿@model IEnumerable<AssociateAppraisals.Web.ViewModels.AppraisalViewModel>
+@{
+    ViewBag.Title = "Appraisals";
+}
+
+<div class="jumbotron">
+    <h1>@ViewBag.Title</h1>
+    <p class="lead">This page lists all appraisals for a given associate.</p>
+</div>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @Html.Partial("Appraisal", item)
+            </div>
+        </div>
+    }
+</div>

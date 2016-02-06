@@ -14,8 +14,7 @@ namespace AssociateAppraisals.Data.Repositories
 
         public Associate GetAssociateById(int associateId)
         {
-            var associate = this.DbContext.Associates.Where(a => a.AssociateId == associateId).FirstOrDefault();
-            return associate;
+            return this.DbContext.Associates.Where(a => a.AssociateId == associateId).FirstOrDefault();
         }
         public override void Update(Associate entity)
         {

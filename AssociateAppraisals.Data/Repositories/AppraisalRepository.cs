@@ -14,8 +14,7 @@ namespace AssociateAppraisals.Data.Repositories
 
         public Appraisal GetAppraisalByYear(int reviewYear)
         {
-            var appraisal = this.DbContext.Appraisals.Where(a => a.ReviewYear == reviewYear).FirstOrDefault();
-            return appraisal;
+            return this.DbContext.Appraisals.Where(a => a.ReviewYear == reviewYear).FirstOrDefault();
         }
         public override void Update(Appraisal entity)
         {

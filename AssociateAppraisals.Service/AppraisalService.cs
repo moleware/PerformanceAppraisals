@@ -44,8 +44,7 @@ namespace AssociateAppraisals.Service
 
         public Appraisal GetAppraisal(int appraisalId)
         {
-            var appraisal = appraisalsRepository.GetById(appraisalId);
-            return appraisal;
+            return appraisalsRepository.GetById(appraisalId);
         }
 
         public void CreateAppraisal(Appraisal appraisal)

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using AssociateAppraisals.Model;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AssociateAppraisals.Web.ViewModels
 {
@@ -10,6 +13,6 @@ namespace AssociateAppraisals.Web.ViewModels
         public int AssociateId { get; set; }
         public string Login { get; set; }
 
-   //     public virtual List<AssociateWorkViewModel> Work { get; set; }
+        public virtual List<Appraisal> Appraisals { get; set; }
     }
 }

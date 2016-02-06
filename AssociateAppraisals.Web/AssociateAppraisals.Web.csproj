@@ -159,6 +159,7 @@
     <Compile Include="ViewModels\AppraisalFormViewModel.cs" />
     <Compile Include="ViewModels\AppraisalQuestionFormViewModel.cs" />
     <Compile Include="ViewModels\AppraisalQuestionViewModel.cs" />
+    <Compile Include="ViewModels\AssociateAppraisalViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\AssociateViewModel.cs" />
     <Compile Include="ViewModels\AppraisalViewModel.cs" />
@@ -215,6 +216,7 @@
     <Content Include="Views\Administration\Index.cshtml" />
     <Content Include="Views\Administration\EditAppraisalQuestions.cshtml" />
     <Content Include="Views\Home\EditAppraisal.cshtml" />
+    <Content Include="Views\Home\Appraisals.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
