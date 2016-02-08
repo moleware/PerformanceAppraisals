@@ -19,10 +19,11 @@ namespace AssociateAppraisals.Web.Controllers
         private readonly IAssociateAppraisalService associateAppraisalService;
         private readonly IAssociateAppraisalQuestionAnswerService associateAppraisalQuestionAnswerService;
 
-        public HomeController(IAppraisalService appraisalService, IAppraisalQuestionService appraisalQuestionService)
+        public HomeController(IAppraisalService appraisalService, IAppraisalQuestionService appraisalQuestionService, IAssociateAppraisalService associateAppraisalService)
         {
             this.appraisalService = appraisalService;
             this.appraisalQuestionService = appraisalQuestionService;
+            this.associateAppraisalService = associateAppraisalService;
         }
 
         // GET: Home

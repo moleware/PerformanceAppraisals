@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using DGS_Enterprise.Model;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AssociateAppraisals.Model
 {
@@ -14,10 +14,13 @@ namespace AssociateAppraisals.Model
         public int AssociateId { get; set; }
         public int PracticeGroupId { get; set; }
 
- //       public Employee Employee { get; set; }  // This is a reference to the DGS_Enterprise employee.
-
-        public virtual List<AppraisalQuestion> AppraisalQuestions { get; set; }
+        
+        [ForeignKey("AssociateId")]
         public virtual Associate Associate { get; set; }
+        [ForeignKey("AppraisalId")]
         public virtual Appraisal Appraisal { get; set; }
+
+        [NotMapped]
+        public virtual List<AppraisalQuestion> AppraisalQuestions { get; set; }
     }
 }

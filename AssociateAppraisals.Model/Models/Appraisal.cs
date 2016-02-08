@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AssociateAppraisals.Model
 {
@@ -13,7 +14,9 @@ namespace AssociateAppraisals.Model
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
+        [NotMapped]
         public virtual List<AppraisalQuestion> Questions { get; set; }
+        [NotMapped]
         public virtual List<AssociateAppraisal> AssociateAppraisals { get; set; }
     }
 }

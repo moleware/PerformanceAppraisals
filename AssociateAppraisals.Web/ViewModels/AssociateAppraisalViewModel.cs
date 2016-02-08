@@ -23,9 +23,11 @@ namespace AssociateAppraisals.Web.ViewModels
         #endregion
 
         #region Other Model References
+        [NotMapped]
         public virtual List<AppraisalQuestionViewModel> Questions { get; set; }
-
+        [NotMapped]
         public virtual Associate Associate { get; set; }
+        [NotMapped]
         public virtual Appraisal Appraisal { get; set; }
         #endregion
     }

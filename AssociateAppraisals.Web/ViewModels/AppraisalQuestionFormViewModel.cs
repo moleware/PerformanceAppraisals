@@ -9,11 +9,11 @@ namespace AssociateAppraisals.Web.ViewModels
 {
     public class AppraisalQuestionFormViewModel
     {
-        [ForeignKey("Appraisal")]
+    //    [ForeignKey("Appraisal")]
         public int AppraisalId { get; set; }
-        [ForeignKey("AppraisalQuestionGroup")]
+  //      [ForeignKey("AppraisalQuestionGroup")]
         public int AppraisalQuestionGroupId { get; set; }
-        [ForeignKey("AppraisalQuestionType")]
+  //      [ForeignKey("AppraisalQuestionType")]
         public int AppraisalQuestionTypeId { get; set; }
         public string Question { get; set; }
         public int QuestionNumber { get; set; }
