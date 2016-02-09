@@ -82,15 +82,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201602081917252_Test migration.resx">
+      <DependentUpon>201602081917252_Test migration.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\AssociateAppraisals.Model\AssociateAppraisals.Model.csproj">
       <Project>{8cf7e123-c177-4c9a-82b1-f34efb14d7e5}</Project>
       <Name>AssociateAppraisals.Model</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602081917252_Test migration.resx">
-      <DependentUpon>201602081917252_Test migration.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

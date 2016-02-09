@@ -1,0 +1,7 @@
+﻿@model AssociateAppraisals.Web.ViewModels.AppraisalQuestionTypeViewModel
+
+@Html.LabelFor(m => m.AppraisalQuestionTypeId)
+@Html.DropDownListFor(m => m.AppraisalQuestionTypeId, Model.QuestionTypes)
+@Html.ValidationMessageFor(m => m.AppraisalQuestionTypeId)
+
+

@@ -4,46 +4,71 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AssociateAppraisals.Model;
+using AssociateAppraisals.Web.ViewModels;
 using AssociateAppraisals.Data;
 using AssociateAppraisals.Service;
-using AssociateAppraisals.Web.ViewModels;
-using AutoMapper;
-
+using System.Data;
 
 namespace AssociateAppraisals.Web.Controllers
 {
     public class AdministrationController : Controller
     {
+        private AssociateAppraisalsEntities entities = new AssociateAppraisalsEntities();
         private readonly IAppraisalService appraisalService;
-        private readonly IAppraisalQuestionService appraisalQuestionService;
 
-        public AdministrationController(IAppraisalService appraisalService, IAppraisalQuestionService appraisalQuestionService)
+        // GET: Index - Administration home
+        public ActionResult Index()
         {
-            this.appraisalService = appraisalService;
-            this.appraisalQuestionService = appraisalQuestionService;
+            ViewBag.LoggedInUser = Helpers.Helpers.GetAssociateFirstNameFromIdentity(User.Identity);
+
+            IEnumerable<Appraisal> appraisals = entities.Appraisals
+                .Include("AssociateAppraisals")
+                .Include("AppraisalQuestions")
+                .ToList();
+            return View(appraisals);
         }
 
-        // GET: EditAppraisal
-        public ActionResult EditAppraisalQuestions(int appraisalId)
+        // GET: ListAssociateAppraisals - Associate Appraisal list
+        public ActionResult ListAssociateAppraisals(int associateId, int appraisalId)
         {
-            IEnumerable<AppraisalQuestionViewModel> viewModelAppraisalQuestions;
-            IEnumerable<Appraisal> appraisals;
-            IEnumerable<AppraisalQuestion> questions;
+            //       IEnumerable<AssociateAppraisalViewModel> viewModelAssociateAppraisals;
+            //       IEnumerable<AssociateAppraisal> associateAppraisals;
 
-            // This seems wrong.... It is known that we'll only get one result back, so why loop?
-            appraisals = appraisalService.GetAppraisals().Where(a => a.AppraisalId == appraisalId);
-            foreach (Appraisal a in appraisals)
+            //       associateAppraisals = associateAppraisalService.GetAssociateAppraisals(associateId, appraisalId);
+
+            //viewModelAssociateAppraisals = Mapper.Map<IEnumerable<AssociateAppraisal>, IEnumerable<AssociateAppraisalViewModel>>(associateAppraisals);
+            // return View(viewModelAssociateAppraisals);
+            return View();
+        }
+
+        // GET: EditAppraisalQuestions
+        public ActionResult EditAppraisalQuestions(int id)
+        {
+            AppraisalQuestion aq = new AppraisalQuestion();
+            aq.AppraisalId = id;
+            return View(aq);
+        }
+
+        // POST: EditAppraisalQuestions
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "AppraisalId, AppraisalQuestionGroupId, AppraisalQuestionTypeId, Question, QuestionNumber")]AppraisalQuestion question)
+        {
+            try
             {
-                questions = appraisalQuestionService.GetAppraisalQuestions(a.AppraisalId);
-                foreach (AppraisalQuestion q in questions)
+                if (ModelState.IsValid)
                 {
-                    q.AppraisalId = appraisalId;
-                    a.Questions.Add(q);
+                    entities.AppraisalQuestions.Add(question);
+                    entities.SaveChanges();
+                    return RedirectToAction("Index", new { id = question.AppraisalId } );
                 }
             }
-
-            viewModelAppraisalQuestions = Mapper.Map<IEnumerable<Appraisal>, IEnumerable<AppraisalQuestionViewModel>>(appraisals);
-            return View(viewModelAppraisalQuestions);
+            catch (DataException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+            return View(question);
         }
     }
 }

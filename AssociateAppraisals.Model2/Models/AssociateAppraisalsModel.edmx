@@ -1,0 +1,615 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AssociateAppraisals.Model_22.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Appraisal">
+          <Key>
+            <PropertyRef Name="AppraisalId" />
+          </Key>
+          <Property Name="AppraisalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReviewYear" Type="int" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AppraisalQuestion">
+          <Key>
+            <PropertyRef Name="AppraisalQuestionId" />
+          </Key>
+          <Property Name="AppraisalQuestionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppraisalId" Type="int" Nullable="false" />
+          <Property Name="AppraisalQuestionGroupId" Type="int" />
+          <Property Name="AppraisalQuestionTypeId" Type="int" />
+          <Property Name="Question" Type="nvarchar" MaxLength="100" />
+          <Property Name="QuestionNumber" Type="int" />
+        </EntityType>
+        <EntityType Name="AppraisalQuestionGroup">
+          <Key>
+            <PropertyRef Name="AppraisalQuestionGroupId" />
+          </Key>
+          <Property Name="AppraisalQuestionGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="AppraisalQuestionType">
+          <Key>
+            <PropertyRef Name="AppraisalQuestionTypeId" />
+          </Key>
+          <Property Name="AppraisalQuestionTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionType" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Associate">
+          <Key>
+            <PropertyRef Name="AssociateId" />
+          </Key>
+          <Property Name="AssociateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssociateAppraisal">
+          <Key>
+            <PropertyRef Name="AssociateAppraisalId" />
+          </Key>
+          <Property Name="AssociateAppraisalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppraisalId" Type="int" Nullable="false" />
+          <Property Name="AssociateId" Type="int" Nullable="false" />
+          <Property Name="PracticeGroupId" Type="int" />
+        </EntityType>
+        <EntityType Name="AssociateAppraisalQuestionAnswer">
+          <Key>
+            <PropertyRef Name="AssociateAppraisalQuestionAnswerId" />
+          </Key>
+          <Property Name="AssociateAppraisalQuestionAnswerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppraisalQuestionId" Type="int" Nullable="false" />
+          <Property Name="AssociateAppraisalId" Type="int" Nullable="false" />
+          <Property Name="Answer" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="AssociateWork">
+          <Key>
+            <PropertyRef Name="WorkId" />
+          </Key>
+          <Property Name="WorkId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssociateId" Type="int" Nullable="false" />
+          <Property Name="ClientName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ClientMatter" Type="nvarchar" MaxLength="100" />
+          <Property Name="MatterName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Hours" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AssociateAppraisals.dbo.CompleteView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CompleteView">
+          <Key>
+            <PropertyRef Name="LoginName" />
+            <PropertyRef Name="StartDate" />
+            <PropertyRef Name="DepartmentName" />
+          </Key>
+          <Property Name="FullName" Type="varchar" MaxLength="50" />
+          <Property Name="LoginName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="DepartmentName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="GradYear" Type="int" />
+          <Property Name="ClientName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ClientMatter" Type="nvarchar" MaxLength="100" />
+          <Property Name="Hours" Type="float" />
+        </EntityType>
+        <Association Name="FK_Answer_AppraisalQuestion">
+          <End Role="AppraisalQuestion" Type="Self.AppraisalQuestion" Multiplicity="1" />
+          <End Role="AssociateAppraisalQuestionAnswer" Type="Self.AssociateAppraisalQuestionAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppraisalQuestion">
+              <PropertyRef Name="AppraisalQuestionId" />
+            </Principal>
+            <Dependent Role="AssociateAppraisalQuestionAnswer">
+              <PropertyRef Name="AppraisalQuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppraisalQuestion_Appraisal">
+          <End Role="Appraisal" Type="Self.Appraisal" Multiplicity="1" />
+          <End Role="AppraisalQuestion" Type="Self.AppraisalQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Appraisal">
+              <PropertyRef Name="AppraisalId" />
+            </Principal>
+            <Dependent Role="AppraisalQuestion">
+              <PropertyRef Name="AppraisalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppraisalQuestion_AppraisalQuestion">
+          <End Role="AppraisalQuestionGroup" Type="Self.AppraisalQuestionGroup" Multiplicity="0..1" />
+          <End Role="AppraisalQuestion" Type="Self.AppraisalQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppraisalQuestionGroup">
+              <PropertyRef Name="AppraisalQuestionGroupId" />
+            </Principal>
+            <Dependent Role="AppraisalQuestion">
+              <PropertyRef Name="AppraisalQuestionGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppraisalQuestion_AppraisalQuestion1">
+          <End Role="AppraisalQuestionType" Type="Self.AppraisalQuestionType" Multiplicity="0..1" />
+          <End Role="AppraisalQuestion" Type="Self.AppraisalQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppraisalQuestionType">
+              <PropertyRef Name="AppraisalQuestionTypeId" />
+            </Principal>
+            <Dependent Role="AppraisalQuestion">
+              <PropertyRef Name="AppraisalQuestionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssociateAppraisal_Appraisal">
+          <End Role="Appraisal" Type="Self.Appraisal" Multiplicity="1" />
+          <End Role="AssociateAppraisal" Type="Self.AssociateAppraisal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Appraisal">
+              <PropertyRef Name="AppraisalId" />
+            </Principal>
+            <Dependent Role="AssociateAppraisal">
+              <PropertyRef Name="AppraisalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssociateAppraisal_Associate">
+          <End Role="Associate" Type="Self.Associate" Multiplicity="1" />
+          <End Role="AssociateAppraisal" Type="Self.AssociateAppraisal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Associate">
+              <PropertyRef Name="AssociateId" />
+            </Principal>
+            <Dependent Role="AssociateAppraisal">
+              <PropertyRef Name="AssociateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssociateAppraisalQuestionAnswer_AssociateAppraisal">
+          <End Role="AssociateAppraisal" Type="Self.AssociateAppraisal" Multiplicity="1" />
+          <End Role="AssociateAppraisalQuestionAnswer" Type="Self.AssociateAppraisalQuestionAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssociateAppraisal">
+              <PropertyRef Name="AssociateAppraisalId" />
+            </Principal>
+            <Dependent Role="AssociateAppraisalQuestionAnswer">
+              <PropertyRef Name="AssociateAppraisalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Work_Work">
+          <End Role="Associate" Type="Self.Associate" Multiplicity="1" />
+          <End Role="AssociateWork" Type="Self.AssociateWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Associate">
+              <PropertyRef Name="AssociateId" />
+            </Principal>
+            <Dependent Role="AssociateWork">
+              <PropertyRef Name="AssociateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AssociateAppraisalsModelStoreContainer">
+          <EntitySet Name="Appraisal" EntityType="Self.Appraisal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppraisalQuestion" EntityType="Self.AppraisalQuestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppraisalQuestionGroup" EntityType="Self.AppraisalQuestionGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppraisalQuestionType" EntityType="Self.AppraisalQuestionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Associate" EntityType="Self.Associate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssociateAppraisal" EntityType="Self.AssociateAppraisal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssociateAppraisalQuestionAnswer" EntityType="Self.AssociateAppraisalQuestionAnswer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssociateWork" EntityType="Self.AssociateWork" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompleteView" EntityType="Self.CompleteView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CompleteView].[FullName] AS [FullName], 
+    [CompleteView].[LoginName] AS [LoginName], 
+    [CompleteView].[StartDate] AS [StartDate], 
+    [CompleteView].[DepartmentName] AS [DepartmentName], 
+    [CompleteView].[Description] AS [Description], 
+    [CompleteView].[GradYear] AS [GradYear], 
+    [CompleteView].[ClientName] AS [ClientName], 
+    [CompleteView].[ClientMatter] AS [ClientMatter], 
+    [CompleteView].[Hours] AS [Hours]
+    FROM [dbo].[CompleteView] AS [CompleteView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Answer_AppraisalQuestion" Association="Self.FK_Answer_AppraisalQuestion">
+            <End Role="AppraisalQuestion" EntitySet="AppraisalQuestion" />
+            <End Role="AssociateAppraisalQuestionAnswer" EntitySet="AssociateAppraisalQuestionAnswer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppraisalQuestion_Appraisal" Association="Self.FK_AppraisalQuestion_Appraisal">
+            <End Role="Appraisal" EntitySet="Appraisal" />
+            <End Role="AppraisalQuestion" EntitySet="AppraisalQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppraisalQuestion_AppraisalQuestion" Association="Self.FK_AppraisalQuestion_AppraisalQuestion">
+            <End Role="AppraisalQuestionGroup" EntitySet="AppraisalQuestionGroup" />
+            <End Role="AppraisalQuestion" EntitySet="AppraisalQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppraisalQuestion_AppraisalQuestion1" Association="Self.FK_AppraisalQuestion_AppraisalQuestion1">
+            <End Role="AppraisalQuestionType" EntitySet="AppraisalQuestionType" />
+            <End Role="AppraisalQuestion" EntitySet="AppraisalQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssociateAppraisal_Appraisal" Association="Self.FK_AssociateAppraisal_Appraisal">
+            <End Role="Appraisal" EntitySet="Appraisal" />
+            <End Role="AssociateAppraisal" EntitySet="AssociateAppraisal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssociateAppraisal_Associate" Association="Self.FK_AssociateAppraisal_Associate">
+            <End Role="Associate" EntitySet="Associate" />
+            <End Role="AssociateAppraisal" EntitySet="AssociateAppraisal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssociateAppraisalQuestionAnswer_AssociateAppraisal" Association="Self.FK_AssociateAppraisalQuestionAnswer_AssociateAppraisal">
+            <End Role="AssociateAppraisal" EntitySet="AssociateAppraisal" />
+            <End Role="AssociateAppraisalQuestionAnswer" EntitySet="AssociateAppraisalQuestionAnswer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Work_Work" Association="Self.FK_Work_Work">
+            <End Role="Associate" EntitySet="Associate" />
+            <End Role="AssociateWork" EntitySet="AssociateWork" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AssociateAppraisals.Model_22" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Appraisal">
+          <Key>
+            <PropertyRef Name="AppraisalId" />
+          </Key>
+          <Property Name="AppraisalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReviewYear" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AppraisalQuestions" Relationship="Self.FK_AppraisalQuestion_Appraisal" FromRole="Appraisal" ToRole="AppraisalQuestion" />
+          <NavigationProperty Name="AssociateAppraisals" Relationship="Self.FK_AssociateAppraisal_Appraisal" FromRole="Appraisal" ToRole="AssociateAppraisal" />
+        </EntityType>
+        <EntityType Name="AppraisalQuestion">
+          <Key>
+            <PropertyRef Name="AppraisalQuestionId" />
+          </Key>
+          <Property Name="AppraisalQuestionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppraisalId" Type="Int32" Nullable="false" />
+          <Property Name="AppraisalQuestionGroupId" Type="Int32" />
+          <Property Name="AppraisalQuestionTypeId" Type="Int32" />
+          <Property Name="Question" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="QuestionNumber" Type="Int32" />
+          <NavigationProperty Name="Appraisal" Relationship="Self.FK_AppraisalQuestion_Appraisal" FromRole="AppraisalQuestion" ToRole="Appraisal" />
+          <NavigationProperty Name="AssociateAppraisalQuestionAnswers" Relationship="Self.FK_Answer_AppraisalQuestion" FromRole="AppraisalQuestion" ToRole="AssociateAppraisalQuestionAnswer" />
+          <NavigationProperty Name="AppraisalQuestionGroup" Relationship="Self.FK_AppraisalQuestion_AppraisalQuestion" FromRole="AppraisalQuestion" ToRole="AppraisalQuestionGroup" />
+          <NavigationProperty Name="AppraisalQuestionType" Relationship="Self.FK_AppraisalQuestion_AppraisalQuestion1" FromRole="AppraisalQuestion" ToRole="AppraisalQuestionType" />
+        </EntityType>
+        <EntityType Name="AppraisalQuestionGroup">
+          <Key>
+            <PropertyRef Name="AppraisalQuestionGroupId" />
+          </Key>
+          <Property Name="AppraisalQuestionGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AppraisalQuestions" Relationship="Self.FK_AppraisalQuestion_AppraisalQuestion" FromRole="AppraisalQuestionGroup" ToRole="AppraisalQuestion" />
+        </EntityType>
+        <EntityType Name="AppraisalQuestionType">
+          <Key>
+            <PropertyRef Name="AppraisalQuestionTypeId" />
+          </Key>
+          <Property Name="AppraisalQuestionTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AppraisalQuestions" Relationship="Self.FK_AppraisalQuestion_AppraisalQuestion1" FromRole="AppraisalQuestionType" ToRole="AppraisalQuestion" />
+        </EntityType>
+        <EntityType Name="Associate">
+          <Key>
+            <PropertyRef Name="AssociateId" />
+          </Key>
+          <Property Name="AssociateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AssociateAppraisals" Relationship="Self.FK_AssociateAppraisal_Associate" FromRole="Associate" ToRole="AssociateAppraisal" />
+          <NavigationProperty Name="AssociateWorks" Relationship="Self.FK_Work_Work" FromRole="Associate" ToRole="AssociateWork" />
+        </EntityType>
+        <EntityType Name="AssociateAppraisal">
+          <Key>
+            <PropertyRef Name="AssociateAppraisalId" />
+          </Key>
+          <Property Name="AssociateAppraisalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppraisalId" Type="Int32" Nullable="false" />
+          <Property Name="AssociateId" Type="Int32" Nullable="false" />
+          <Property Name="PracticeGroupId" Type="Int32" />
+          <NavigationProperty Name="Appraisal" Relationship="Self.FK_AssociateAppraisal_Appraisal" FromRole="AssociateAppraisal" ToRole="Appraisal" />
+          <NavigationProperty Name="Associate" Relationship="Self.FK_AssociateAppraisal_Associate" FromRole="AssociateAppraisal" ToRole="Associate" />
+          <NavigationProperty Name="AssociateAppraisalQuestionAnswers" Relationship="Self.FK_AssociateAppraisalQuestionAnswer_AssociateAppraisal" FromRole="AssociateAppraisal" ToRole="AssociateAppraisalQuestionAnswer" />
+        </EntityType>
+        <EntityType Name="AssociateAppraisalQuestionAnswer">
+          <Key>
+            <PropertyRef Name="AssociateAppraisalQuestionAnswerId" />
+          </Key>
+          <Property Name="AssociateAppraisalQuestionAnswerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppraisalQuestionId" Type="Int32" Nullable="false" />
+          <Property Name="AssociateAppraisalId" Type="Int32" Nullable="false" />
+          <Property Name="Answer" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AppraisalQuestion" Relationship="Self.FK_Answer_AppraisalQuestion" FromRole="AssociateAppraisalQuestionAnswer" ToRole="AppraisalQuestion" />
+          <NavigationProperty Name="AssociateAppraisal" Relationship="Self.FK_AssociateAppraisalQuestionAnswer_AssociateAppraisal" FromRole="AssociateAppraisalQuestionAnswer" ToRole="AssociateAppraisal" />
+        </EntityType>
+        <EntityType Name="AssociateWork">
+          <Key>
+            <PropertyRef Name="WorkId" />
+          </Key>
+          <Property Name="WorkId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssociateId" Type="Int32" Nullable="false" />
+          <Property Name="ClientName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ClientMatter" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MatterName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Hours" Type="Double" />
+          <NavigationProperty Name="Associate" Relationship="Self.FK_Work_Work" FromRole="AssociateWork" ToRole="Associate" />
+        </EntityType>
+        <EntityType Name="CompleteView">
+          <Key>
+            <PropertyRef Name="LoginName" />
+            <PropertyRef Name="StartDate" />
+            <PropertyRef Name="DepartmentName" />
+          </Key>
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GradYear" Type="Int32" />
+          <Property Name="ClientName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ClientMatter" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Hours" Type="Double" />
+        </EntityType>
+        <Association Name="FK_AppraisalQuestion_Appraisal">
+          <End Role="Appraisal" Type="Self.Appraisal" Multiplicity="1" />
+          <End Role="AppraisalQuestion" Type="Self.AppraisalQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Appraisal">
+              <PropertyRef Name="AppraisalId" />
+            </Principal>
+            <Dependent Role="AppraisalQuestion">
+              <PropertyRef Name="AppraisalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssociateAppraisal_Appraisal">
+          <End Role="Appraisal" Type="Self.Appraisal" Multiplicity="1" />
+          <End Role="AssociateAppraisal" Type="Self.AssociateAppraisal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Appraisal">
+              <PropertyRef Name="AppraisalId" />
+            </Principal>
+            <Dependent Role="AssociateAppraisal">
+              <PropertyRef Name="AppraisalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Answer_AppraisalQuestion">
+          <End Role="AppraisalQuestion" Type="Self.AppraisalQuestion" Multiplicity="1" />
+          <End Role="AssociateAppraisalQuestionAnswer" Type="Self.AssociateAppraisalQuestionAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppraisalQuestion">
+              <PropertyRef Name="AppraisalQuestionId" />
+            </Principal>
+            <Dependent Role="AssociateAppraisalQuestionAnswer">
+              <PropertyRef Name="AppraisalQuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppraisalQuestion_AppraisalQuestion">
+          <End Role="AppraisalQuestionGroup" Type="Self.AppraisalQuestionGroup" Multiplicity="0..1" />
+          <End Role="AppraisalQuestion" Type="Self.AppraisalQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppraisalQuestionGroup">
+              <PropertyRef Name="AppraisalQuestionGroupId" />
+            </Principal>
+            <Dependent Role="AppraisalQuestion">
+              <PropertyRef Name="AppraisalQuestionGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppraisalQuestion_AppraisalQuestion1">
+          <End Role="AppraisalQuestionType" Type="Self.AppraisalQuestionType" Multiplicity="0..1" />
+          <End Role="AppraisalQuestion" Type="Self.AppraisalQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppraisalQuestionType">
+              <PropertyRef Name="AppraisalQuestionTypeId" />
+            </Principal>
+            <Dependent Role="AppraisalQuestion">
+              <PropertyRef Name="AppraisalQuestionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssociateAppraisal_Associate">
+          <End Role="Associate" Type="Self.Associate" Multiplicity="1" />
+          <End Role="AssociateAppraisal" Type="Self.AssociateAppraisal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Associate">
+              <PropertyRef Name="AssociateId" />
+            </Principal>
+            <Dependent Role="AssociateAppraisal">
+              <PropertyRef Name="AssociateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Work_Work">
+          <End Role="Associate" Type="Self.Associate" Multiplicity="1" />
+          <End Role="AssociateWork" Type="Self.AssociateWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Associate">
+              <PropertyRef Name="AssociateId" />
+            </Principal>
+            <Dependent Role="AssociateWork">
+              <PropertyRef Name="AssociateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssociateAppraisalQuestionAnswer_AssociateAppraisal">
+          <End Role="AssociateAppraisal" Type="Self.AssociateAppraisal" Multiplicity="1" />
+          <End Role="AssociateAppraisalQuestionAnswer" Type="Self.AssociateAppraisalQuestionAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssociateAppraisal">
+              <PropertyRef Name="AssociateAppraisalId" />
+            </Principal>
+            <Dependent Role="AssociateAppraisalQuestionAnswer">
+              <PropertyRef Name="AssociateAppraisalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AssociateAppraisalsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Appraisals" EntityType="Self.Appraisal" />
+          <EntitySet Name="AppraisalQuestions" EntityType="Self.AppraisalQuestion" />
+          <EntitySet Name="AppraisalQuestionGroups" EntityType="Self.AppraisalQuestionGroup" />
+          <EntitySet Name="AppraisalQuestionTypes" EntityType="Self.AppraisalQuestionType" />
+          <EntitySet Name="Associates" EntityType="Self.Associate" />
+          <EntitySet Name="AssociateAppraisals" EntityType="Self.AssociateAppraisal" />
+          <EntitySet Name="AssociateAppraisalQuestionAnswers" EntityType="Self.AssociateAppraisalQuestionAnswer" />
+          <EntitySet Name="AssociateWorks" EntityType="Self.AssociateWork" />
+          <EntitySet Name="CompleteViews" EntityType="Self.CompleteView" />
+          <AssociationSet Name="FK_AppraisalQuestion_Appraisal" Association="Self.FK_AppraisalQuestion_Appraisal">
+            <End Role="Appraisal" EntitySet="Appraisals" />
+            <End Role="AppraisalQuestion" EntitySet="AppraisalQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssociateAppraisal_Appraisal" Association="Self.FK_AssociateAppraisal_Appraisal">
+            <End Role="Appraisal" EntitySet="Appraisals" />
+            <End Role="AssociateAppraisal" EntitySet="AssociateAppraisals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Answer_AppraisalQuestion" Association="Self.FK_Answer_AppraisalQuestion">
+            <End Role="AppraisalQuestion" EntitySet="AppraisalQuestions" />
+            <End Role="AssociateAppraisalQuestionAnswer" EntitySet="AssociateAppraisalQuestionAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppraisalQuestion_AppraisalQuestion" Association="Self.FK_AppraisalQuestion_AppraisalQuestion">
+            <End Role="AppraisalQuestionGroup" EntitySet="AppraisalQuestionGroups" />
+            <End Role="AppraisalQuestion" EntitySet="AppraisalQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppraisalQuestion_AppraisalQuestion1" Association="Self.FK_AppraisalQuestion_AppraisalQuestion1">
+            <End Role="AppraisalQuestionType" EntitySet="AppraisalQuestionTypes" />
+            <End Role="AppraisalQuestion" EntitySet="AppraisalQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssociateAppraisal_Associate" Association="Self.FK_AssociateAppraisal_Associate">
+            <End Role="Associate" EntitySet="Associates" />
+            <End Role="AssociateAppraisal" EntitySet="AssociateAppraisals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Work_Work" Association="Self.FK_Work_Work">
+            <End Role="Associate" EntitySet="Associates" />
+            <End Role="AssociateWork" EntitySet="AssociateWorks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssociateAppraisalQuestionAnswer_AssociateAppraisal" Association="Self.FK_AssociateAppraisalQuestionAnswer_AssociateAppraisal">
+            <End Role="AssociateAppraisal" EntitySet="AssociateAppraisals" />
+            <End Role="AssociateAppraisalQuestionAnswer" EntitySet="AssociateAppraisalQuestionAnswers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AssociateAppraisalsModelStoreContainer" CdmEntityContainer="AssociateAppraisalsEntities">
+          <EntitySetMapping Name="Appraisals">
+            <EntityTypeMapping TypeName="AssociateAppraisals.Model_22.Appraisal">
+              <MappingFragment StoreEntitySet="Appraisal">
+                <ScalarProperty Name="AppraisalId" ColumnName="AppraisalId" />
+                <ScalarProperty Name="ReviewYear" ColumnName="ReviewYear" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppraisalQuestions">
+            <EntityTypeMapping TypeName="AssociateAppraisals.Model_22.AppraisalQuestion">
+              <MappingFragment StoreEntitySet="AppraisalQuestion">
+                <ScalarProperty Name="AppraisalQuestionId" ColumnName="AppraisalQuestionId" />
+                <ScalarProperty Name="AppraisalId" ColumnName="AppraisalId" />
+                <ScalarProperty Name="AppraisalQuestionGroupId" ColumnName="AppraisalQuestionGroupId" />
+                <ScalarProperty Name="AppraisalQuestionTypeId" ColumnName="AppraisalQuestionTypeId" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="QuestionNumber" ColumnName="QuestionNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppraisalQuestionGroups">
+            <EntityTypeMapping TypeName="AssociateAppraisals.Model_22.AppraisalQuestionGroup">
+              <MappingFragment StoreEntitySet="AppraisalQuestionGroup">
+                <ScalarProperty Name="AppraisalQuestionGroupId" ColumnName="AppraisalQuestionGroupId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppraisalQuestionTypes">
+            <EntityTypeMapping TypeName="AssociateAppraisals.Model_22.AppraisalQuestionType">
+              <MappingFragment StoreEntitySet="AppraisalQuestionType">
+                <ScalarProperty Name="AppraisalQuestionTypeId" ColumnName="AppraisalQuestionTypeId" />
+                <ScalarProperty Name="QuestionType" ColumnName="QuestionType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Associates">
+            <EntityTypeMapping TypeName="AssociateAppraisals.Model_22.Associate">
+              <MappingFragment StoreEntitySet="Associate">
+                <ScalarProperty Name="AssociateId" ColumnName="AssociateId" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssociateAppraisals">
+            <EntityTypeMapping TypeName="AssociateAppraisals.Model_22.AssociateAppraisal">
+              <MappingFragment StoreEntitySet="AssociateAppraisal">
+                <ScalarProperty Name="AssociateAppraisalId" ColumnName="AssociateAppraisalId" />
+                <ScalarProperty Name="AppraisalId" ColumnName="AppraisalId" />
+                <ScalarProperty Name="AssociateId" ColumnName="AssociateId" />
+                <ScalarProperty Name="PracticeGroupId" ColumnName="PracticeGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssociateAppraisalQuestionAnswers">
+            <EntityTypeMapping TypeName="AssociateAppraisals.Model_22.AssociateAppraisalQuestionAnswer">
+              <MappingFragment StoreEntitySet="AssociateAppraisalQuestionAnswer">
+                <ScalarProperty Name="AssociateAppraisalQuestionAnswerId" ColumnName="AssociateAppraisalQuestionAnswerId" />
+                <ScalarProperty Name="AppraisalQuestionId" ColumnName="AppraisalQuestionId" />
+                <ScalarProperty Name="AssociateAppraisalId" ColumnName="AssociateAppraisalId" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssociateWorks">
+            <EntityTypeMapping TypeName="AssociateAppraisals.Model_22.AssociateWork">
+              <MappingFragment StoreEntitySet="AssociateWork">
+                <ScalarProperty Name="WorkId" ColumnName="WorkId" />
+                <ScalarProperty Name="AssociateId" ColumnName="AssociateId" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientMatter" ColumnName="ClientMatter" />
+                <ScalarProperty Name="MatterName" ColumnName="MatterName" />
+                <ScalarProperty Name="Hours" ColumnName="Hours" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompleteViews">
+            <EntityTypeMapping TypeName="AssociateAppraisals.Model_22.CompleteView">
+              <MappingFragment StoreEntitySet="CompleteView">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="GradYear" ColumnName="GradYear" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientMatter" ColumnName="ClientMatter" />
+                <ScalarProperty Name="Hours" ColumnName="Hours" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -21,15 +21,6 @@ namespace AssociateAppraisals.Web.Mappings
                 cfg.AddProfile<DomainToViewModelMappingProfile>();
                 cfg.AddProfile<ViewModelToDomainMappingProfile>();
             });
-
-
-            // This style is apparently obsolete...
-            /*           Mapper.Initialize(cfg =>
-                       {
-                           cfg.AddProfile<DomainToViewModelMappingProfile>();
-                           cfg.AddProfile<ViewModelToDomainMappingProfile>();
-                       });
-                       */
         }
     }
 }

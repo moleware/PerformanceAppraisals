@@ -8,11 +8,11 @@ using Autofac;
 using Autofac.Integration.Mvc;
 using AssociateAppraisals.Model;
 using AssociateAppraisals.Data;
-using AssociateAppraisals.Data.Infrastructure;
-using AssociateAppraisals.Data.Repositories;
-using AssociateAppraisals.Service;
 using AssociateAppraisals.Web.Mappings;
 
+// ****************************************************************
+// THIS FILE IS NO LONGER BEING USED
+// ****************************************************************
 
 namespace AssociateAppraisals.Web
 {
@@ -21,7 +21,7 @@ namespace AssociateAppraisals.Web
         public static void Run()
         {
             // Start AutoFac
-            SetAutofacContainer();
+    //        SetAutofacContainer();
 
             //Configure AutoMapper
             AutoMapperConfiguration.Configure();
@@ -29,7 +29,7 @@ namespace AssociateAppraisals.Web
 
         private static void SetAutofacContainer()
         {
-            var builder = new ContainerBuilder();
+       /*     var builder = new ContainerBuilder();
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
@@ -44,7 +44,7 @@ namespace AssociateAppraisals.Web
                .AsImplementedInterfaces().InstancePerRequest();
 
             IContainer container = builder.Build();
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));  */
         }
     }
 }

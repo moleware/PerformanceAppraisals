@@ -1,4 +1,22 @@
-﻿body {
+﻿/* This file was created for custom CSS */
+
+.clickablediv{
+    position: absolute;     /*Define absolute postion among the parent div*/
+    top: 0;                 /* Start in a known position, top left */
+    left: 0;
+    width: 100%;            /*Make sure the link expands among the whole parent div*/
+    height: 100%; 
+    line-height: 200px;     
+    text-align: right;      
+}
+
+.floating-box{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }

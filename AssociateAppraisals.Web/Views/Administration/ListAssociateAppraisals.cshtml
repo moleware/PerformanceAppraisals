@@ -1,0 +1,21 @@
+﻿@model IEnumerable<AssociateAppraisals.Web.ViewModels.AssociateAppraisalViewModel>
+@{
+    ViewBag.Title = "List of " + Model.First().Associate.Login + "'s reviews.";
+}
+
+<div class="jumbotron">
+    <h1>@ViewBag.Title</h1>
+    <p class="lead">This is where administrators can view a list of all reviews of this associate.</p>
+</div>
+
+<div class="row">
+     
+    @foreach (var item in Model)
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @Html.Partial("AssociateAppraisal", item)
+            </div>
+        </div>
+    }
+</div>

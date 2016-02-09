@@ -1,0 +1,30 @@
+﻿@model IEnumerable<AssociateAppraisals.Web.ViewModels.AppraisalViewModel>
+@{
+    ViewBag.Title = "My Appraisals";
+}
+
+<div class="jumbotron">
+    <h1>@ViewBag.Title</h1>
+    <p class="lead">This page lists all appraisals for a given associate.</p>
+</div>
+
+<div class="row">
+    @foreach (var appraisal in Model)       // This is where we display each appraisal the associate has particpated in
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Appraisal @appraisal.AppraisalId
+            </div>
+            <div class="panel-body">
+                @foreach (var associateAppraisal in appraisal.AssociateAppraisals)
+                {
+                    foreach(var question in associateAppraisal.AppraisalQuestions)
+                    {
+                        <p>@question.QuestionNumber) @question.Question</p>
+                        <p>@question.AssociateAppraisalQuestionAnswer.Answer</p>
+                    }
+                }
+            </div>
+        </div>
+    }
+</div>

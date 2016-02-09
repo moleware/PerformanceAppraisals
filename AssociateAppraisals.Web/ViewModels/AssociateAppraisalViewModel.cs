@@ -1,34 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using AssociateAppraisals.Model;
-using AssociateAppraisals.Helpers;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AssociateAppraisals.Web.ViewModels
 {
-    public class AssociateAppraisalViewModel
+    public class AssociateAppraisalViewModel : AssociateAppraisal
     {
-        #region Extra View Properties
 
-        #endregion
-
-        #region Database Fields
-        public int AssociateAppraisalId { get; set; }
-        public int AppraisalId { get; set; }
-        public int AssociateId { get; set; }
-        public int PracticeGroupId { get; set; }
-        #endregion
-
-        #region Other Model References
-        [NotMapped]
-        public virtual List<AppraisalQuestionViewModel> Questions { get; set; }
-        [NotMapped]
-        public virtual Associate Associate { get; set; }
-        [NotMapped]
-        public virtual Appraisal Appraisal { get; set; }
-        #endregion
     }
 }

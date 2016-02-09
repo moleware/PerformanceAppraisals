@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AssociateAppraisals.Model;
-using AssociateAppraisals.Data;
-using AssociateAppraisals.Data.Repositories;
 using AssociateAppraisals.Data.Infrastructure;
+using AssociateAppraisals.Data.Repositories;
 
 
 namespace AssociateAppraisals.Service
 {
     public interface IAssociateAppraisalService
     {
+        IEnumerable<AssociateAppraisal> GetAssociateAppraisals();
         IEnumerable<AssociateAppraisal> GetAssociateAppraisals(int associateId, int appraisalId);
         AssociateAppraisal GetAssociateAppraisal(int associateAppraisalId);
     }
@@ -34,6 +34,10 @@ namespace AssociateAppraisals.Service
 
         #region IAssociateAppraisalService Members
 
+        public IEnumerable<AssociateAppraisal> GetAssociateAppraisals()
+        {
+            return associateAppraisalsRepository.GetAssociateAppraisals();
+        }
         public IEnumerable<AssociateAppraisal> GetAssociateAppraisals(int associateId, int appraisalId)
         {
             return associateAppraisalsRepository.GetAssociateAppraisals(associateId, appraisalId);

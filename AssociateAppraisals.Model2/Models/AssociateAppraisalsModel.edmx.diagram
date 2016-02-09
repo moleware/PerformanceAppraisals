@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e2b2348bd05245c9b0785d666fc406b7" Name="Diagram1" ZoomLevel="83">
+        <EntityTypeShape EntityType="AssociateAppraisals.Model_2.Appraisal" Width="1.5" PointX="5.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AssociateAppraisals.Model_2.AppraisalQuestion" Width="1.5" PointX="8" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AssociateAppraisals.Model_2.AppraisalQuestionGroup" Width="1.5" PointX="3.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AssociateAppraisals.Model_2.AppraisalQuestionType" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AssociateAppraisals.Model_2.Associate" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AssociateAppraisals.Model_2.AssociateAppraisal" Width="1.5" PointX="1.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AssociateAppraisals.Model_2.AssociateAppraisalQuestionAnswer" Width="2.375" PointX="4.625" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="AssociateAppraisals.Model_2.AssociateWork" Width="1.5" PointX="1.125" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AssociateAppraisals.Model_2.CompleteView" Width="1.5" PointX="7.875" PointY="8.375" IsExpanded="true" />
+        <AssociationConnector Association="AssociateAppraisals.Model_2.FK_AppraisalQuestion_Appraisal" ManuallyRouted="false" />
+        <AssociationConnector Association="AssociateAppraisals.Model_2.FK_AssociateAppraisal_Appraisal" ManuallyRouted="false" />
+        <AssociationConnector Association="AssociateAppraisals.Model_2.FK_Answer_AppraisalQuestion" ManuallyRouted="false" />
+        <AssociationConnector Association="AssociateAppraisals.Model_2.FK_AppraisalQuestion_AppraisalQuestion" ManuallyRouted="false" />
+        <AssociationConnector Association="AssociateAppraisals.Model_2.FK_AppraisalQuestion_AppraisalQuestion1" ManuallyRouted="false" />
+        <AssociationConnector Association="AssociateAppraisals.Model_2.FK_AssociateAppraisal_Associate" ManuallyRouted="false" />
+        <AssociationConnector Association="AssociateAppraisals.Model_2.FK_Work_Work" ManuallyRouted="false" />
+        <AssociationConnector Association="AssociateAppraisals.Model_2.FK_AssociateAppraisalQuestionAnswer_AssociateAppraisal" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

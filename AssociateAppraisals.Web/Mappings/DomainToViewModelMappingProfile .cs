@@ -22,7 +22,6 @@ namespace AssociateAppraisals.Web.Mappings
             Mapper.CreateMap<AppraisalQuestion, AppraisalQuestionViewModel>();
             Mapper.CreateMap<Associate, AssociateViewModel>();
             Mapper.CreateMap<AssociateAppraisal, AssociateAppraisalViewModel>();
-
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AssociateAppraisals.Web.ViewModels.AppraisalViewModel>
+﻿@model IEnumerable<AssociateAppraisals.Model.Appraisal>
 @{
     ViewBag.Title = "Associate Appraisals";
 }
@@ -9,12 +9,10 @@
 </div>
 
 <div class="row">
-    @foreach (var item in Model)
-    {
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                @Html.Partial("Appraisal", item)
-            </div>
-        </div>
-    }
+    <div class="floating-box">
+        @foreach (var item in Model)
+        {
+            @Html.Partial("_Appraisal", item)
+        }
+    </div>
 </div>

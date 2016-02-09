@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AssociateAppraisals.Model;
-using AssociateAppraisals.Data;
-using AssociateAppraisals.Data.Repositories;
 using AssociateAppraisals.Data.Infrastructure;
+using AssociateAppraisals.Data.Repositories;
 
 
 namespace AssociateAppraisals.Service

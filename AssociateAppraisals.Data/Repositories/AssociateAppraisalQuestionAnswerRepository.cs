@@ -20,9 +20,9 @@ namespace AssociateAppraisals.Data.Repositories
         {
             return this.DbContext.AssociateAppraisalQuestionAnswers.Where(aaqa => (aaqa.AppraisalQuestionId == appraisalQuestionId) && (aaqa.AssociateAppraisalId == associateAppraisalId)).FirstOrDefault();
         }
-        public List<AssociateAppraisalQuestionAnswer> GetAssociateAppraisalQuestionAnswers(int associateAppraisalId)
+        public IEnumerable<AssociateAppraisalQuestionAnswer> GetAssociateAppraisalQuestionAnswers(int associateAppraisalId)
         {
-            return this.DbContext.AssociateAppraisalQuestionAnswers.Where(aaqa => aaqa.AssociateAppraisalId == associateAppraisalId).ToList();
+            return this.DbContext.AssociateAppraisalQuestionAnswers.Where(aaqa => aaqa.AssociateAppraisalId == associateAppraisalId);
         }
         public override void Update(AssociateAppraisalQuestionAnswer entity)
         {
@@ -34,6 +34,6 @@ namespace AssociateAppraisals.Data.Repositories
     {
         AssociateAppraisalQuestionAnswer GetAssociateAppraisalQuestionAnswer(int AssociateAppraisalQuestionAnswerId);
         AssociateAppraisalQuestionAnswer GetAssociateAppraisalQuestionAnswer(int appraisalQuestionId, int associateAppraisalId);
-        List<AssociateAppraisalQuestionAnswer> GetAssociateAppraisalQuestionAnswers(int associateAppraisalId);
+        IEnumerable<AssociateAppraisalQuestionAnswer> GetAssociateAppraisalQuestionAnswers(int associateAppraisalId);
     }
 }

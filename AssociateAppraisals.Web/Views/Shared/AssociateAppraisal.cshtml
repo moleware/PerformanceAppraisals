@@ -1,0 +1,29 @@
+﻿
+@model AssociateAppraisals.Web.ViewModels.AssociateAppraisalViewModel
+
+<div class="panel-body">
+    <div class="media">
+        <div class="media-body clickablediv">
+            @if (User.IsInRole("dgslaw\\ems_owner"))    // This person will see all associates with reviews
+            {   <a href="@Url.Action("Administration","EditAppraisalQuestions","Administration")">
+                    <h3 class="media-heading">
+                        Appraisal @Model.AppraisalId - @Model.Appraisal.ReviewYear
+                    </h3>
+                </a>
+                <a href="@Url.Action("ListAssociateAppraisals","Administration",Model.AssociateId.ToString())">
+                    <p>Associate: @Model.Associate.AssociateId</p>
+                </a>
+                }
+                else                // This person will only see their own reviews
+                {
+                <a href="@Url.Action("","")">
+
+                    <h3 class="media-heading">
+                        Appraisal @Model.AppraisalId - @Model.Appraisal.ReviewYear
+                    </h3>
+                </a>
+                }
+                <p>Associate Appraisal Id: @Model.AssociateAppraisalId</p>
+</div>  
+    </div>
+</div>

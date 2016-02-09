@@ -1,0 +1,27 @@
+﻿
+@model AssociateAppraisals.Model.Appraisal
+
+<div class="item">
+    <div class="body-content">
+        @if (User.IsInRole("dgslaw\\ems_owner"))
+        {
+            <a href="@Url.Action("EditAppraisalQuestions","Administration", new { id = Model.AppraisalId })">
+                <h3 class="media-heading">
+                    Appraisal @Model.AppraisalId
+                </h3>
+            </a>
+        }
+        else
+        {
+            <a href="@Url.Action("MyAppraisals","Home")">
+            
+                <h3 class="media-heading">
+                    Appraisal @Model.AppraisalId
+                </h3>
+            </a>
+        }
+        <p>Review Year: @Model.ReviewYear</p>
+        <p>Start Date: @(((DateTime)Model.StartDate).ToShortDateString())</p>
+        <p>End Date: @(((DateTime)Model.EndDate).ToShortDateString())</p>
+    </div>
+</div>

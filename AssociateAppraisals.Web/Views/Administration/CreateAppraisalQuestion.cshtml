@@ -1,0 +1,30 @@
+﻿@model IEnumerable<AssociateAppraisals.Model.Appraisal>
+@{
+    ViewBag.Title = "Associate Appraisals Administration";
+}
+
+<div class="jumbotron">
+    <h1>@ViewBag.Title</h1>
+    <p class="lead">This is where administrators can edit appraisal questions.</p>
+</div>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "CreateReservationForm" }))
+{
+<div class="row">
+    <h3>Appraisal @Model.First().AppraisalId</h3>
+
+    <div class="row">
+    @foreach (var item in Model)
+    {
+        foreach (var question in item.AppraisalQuestions)
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @Html.Partial("Question", question)
+                </div>
+            </div>
+        }
+    }
+    </div>
+</div>
+}

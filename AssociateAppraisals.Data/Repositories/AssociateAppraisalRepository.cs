@@ -19,8 +19,12 @@ namespace AssociateAppraisals.Data.Repositories
         public List<AssociateAppraisal> GetAssociateAppraisals(int associateId, int appraisalId)
         {
             return this.DbContext.AssociateAppraisals.Where(a => (a.AssociateId == associateId) && (a.AppraisalId == appraisalId)).ToList();
-
         }
+        public IEnumerable<AssociateAppraisal> GetAssociateAppraisals()
+        {
+            return this.DbContext.AssociateAppraisals;
+        }
+
         public override void Update(AssociateAppraisal entity)
         {
             base.Update(entity);
@@ -30,6 +34,7 @@ namespace AssociateAppraisals.Data.Repositories
     public interface IAssociateAppraisalRepository : IRepository<AssociateAppraisal>
     {
         AssociateAppraisal GetAssociateAppraisal(int reviewYear);
+        IEnumerable<AssociateAppraisal> GetAssociateAppraisals();
         List<AssociateAppraisal> GetAssociateAppraisals(int associateId, int appraisalId);
     }
 }

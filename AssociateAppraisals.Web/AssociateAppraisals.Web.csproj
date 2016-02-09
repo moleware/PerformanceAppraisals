@@ -156,34 +156,36 @@
     <Compile Include="Mappings\DomainToViewModelMappingProfile .cs" />
     <Compile Include="Mappings\ViewModelToDomainMappingProfile .cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\AppraisalFormViewModel.cs" />
-    <Compile Include="ViewModels\AppraisalQuestionFormViewModel.cs" />
+    <Compile Include="ViewModels\AppraisalQuestionGroupViewModel.cs" />
+    <Compile Include="ViewModels\AppraisalQuestionTypeViewModel.cs" />
     <Compile Include="ViewModels\AppraisalQuestionViewModel.cs" />
     <Compile Include="ViewModels\AssociateAppraisalViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\AssociateViewModel.cs" />
     <Compile Include="ViewModels\AppraisalViewModel.cs" />
+    <Content Include="Views\Administration\CreateAppraisalQuestion.cshtml" />
+    <Content Include="Views\Shared\_AppraisalQuestionTypes.cshtml" />
+    <Content Include="Views\Shared\_AppraisalQuestionGroups.cshtml" />
+    <Content Include="Views\Shared\_Appraisal.cshtml" />
+    <None Include="Views\Shared\_ListAppraisals.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="css\bootstrap-theme.css" />
-    <Content Include="css\bootstrap-theme.min.css" />
-    <Content Include="css\bootstrap.css" />
-    <Content Include="css\bootstrap.min.css" />
-    <Content Include="css\site.css" />
+    <Content Include="Content\site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\site.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="css\bootstrap-theme.css.map" />
-    <Content Include="css\bootstrap-theme.min.css.map" />
-    <Content Include="css\bootstrap.css.map" />
-    <Content Include="css\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -217,6 +219,9 @@
     <Content Include="Views\Administration\EditAppraisalQuestions.cshtml" />
     <Content Include="Views\Home\EditAppraisal.cshtml" />
     <Content Include="Views\Home\Appraisals.cshtml" />
+    <Content Include="Views\Home\MyAppraisals.cshtml" />
+    <Content Include="Views\Shared\AssociateAppraisal.cshtml" />
+    <Content Include="Views\Administration\ListAssociateAppraisals.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

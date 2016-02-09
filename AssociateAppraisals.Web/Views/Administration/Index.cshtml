@@ -1,20 +1,16 @@
-﻿@model IEnumerable<AssociateAppraisals.Web.ViewModels.AppraisalViewModel>
+﻿@model IEnumerable<AssociateAppraisals.Model.Appraisal>
 @{
     ViewBag.Title = "Associate Appraisals Administration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="jumbotron">
     <h1>@ViewBag.Title</h1>
-    <p class="lead">This is where administrators can edit appraisal questions.</p>
+    <p class="lead">This is where administrators can do all sorts of appraisal-related magic.</p>
 </div>
-
+<p>Click an Appraisal to edit questions for that year's appraisal.</p>
+<p>Click an Associate to see all reviews for that associate.</p>
 <div class="row">
-    @foreach (var item in Model)
-    {
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                @Html.Partial("Appraisal", item)
-            </div>
-        </div>
-    }
+    <h1>Here be the appraisals.</h1>
+    @Html.Partial("_ListAppraisals", Model)
 </div>

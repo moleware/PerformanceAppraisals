@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AssociateAppraisals.Model;
-using AssociateAppraisals.Data;
 using AssociateAppraisals.Data.Repositories;
 using AssociateAppraisals.Data.Infrastructure;
 
@@ -13,6 +12,7 @@ namespace AssociateAppraisals.Service
     public interface IAppraisalService
     {
         IEnumerable<Appraisal> GetAppraisals(int reviewYear = 0);
+        Appraisal GetAppraisalByReviewYear(int reviewYear);
         Appraisal GetAppraisal(int appraisalId);
         void CreateAppraisal(Appraisal appraisal);
         void SaveAppraisal();
@@ -40,6 +40,11 @@ namespace AssociateAppraisals.Service
                 appraisals = appraisals.Where(a => a.ReviewYear == reviewYear);
             }
             return appraisals;
+        }
+
+        public Appraisal GetAppraisalByReviewYear(int reviewYear)
+        {
+            return appraisalsRepository.GetAppraisalByYear(reviewYear);
         }
 
         public Appraisal GetAppraisal(int appraisalId)

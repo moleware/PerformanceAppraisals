@@ -4,46 +4,42 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AssociateAppraisals.Model;
+using AssociateAppraisals.Web.ViewModels;
+using AssociateAppraisals.Data.Repositories;
 using AssociateAppraisals.Data;
 using AssociateAppraisals.Service;
-using AssociateAppraisals.Web.ViewModels;
-using AutoMapper;
-
 
 namespace AssociateAppraisals.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private AssociateAppraisalsEntities entities = new AssociateAppraisalsEntities();
         private readonly IAppraisalService appraisalService;
-        private readonly IAppraisalQuestionService appraisalQuestionService;
-        private readonly IAssociateAppraisalService associateAppraisalService;
-        private readonly IAssociateAppraisalQuestionAnswerService associateAppraisalQuestionAnswerService;
 
-        public HomeController(IAppraisalService appraisalService, IAppraisalQuestionService appraisalQuestionService, IAssociateAppraisalService associateAppraisalService)
+        public HomeController()
         {
+        }
+
+        public HomeController(IAppraisalService appraisalService)
+        {
+            
             this.appraisalService = appraisalService;
-            this.appraisalQuestionService = appraisalQuestionService;
-            this.associateAppraisalService = associateAppraisalService;
         }
 
         // GET: Home
         public ActionResult Index()
         {
-            IEnumerable<AppraisalViewModel> viewModelAppraisals;
-            IEnumerable<Appraisal> appraisals;
-
-            appraisals = appraisalService.GetAppraisals();
-
             ViewBag.LoggedInUser = Helpers.Helpers.GetAssociateFirstNameFromIdentity(User.Identity);
+            IEnumerable<Appraisal> appraisals = entities.Appraisals.ToList();
 
-            viewModelAppraisals = Mapper.Map<IEnumerable<Appraisal>, IEnumerable<AppraisalViewModel>>(appraisals);
-            return View(viewModelAppraisals);
+            return View(appraisals);
         }
 
         //GET: Appraisals
-        public ActionResult MyAppraisals()
+  /*       public ActionResult MyAppraisals()      // This view should be displaying appraisals for the year clicked... Pass in appraisalId
         {
-            IEnumerable<AppraisalViewModel> viewModelAppraisals;
+           IEnumerable<AppraisalViewModel> viewModelAppraisals;
+            IEnumerable<AssociateAppraisalViewModel> viewModelAssociateAppraisals;
             IEnumerable<Appraisal> appraisals;
             IEnumerable<AppraisalQuestion> questions;
             IEnumerable<AssociateAppraisal> associateAppraisals;
@@ -82,10 +78,10 @@ namespace AssociateAppraisals.Web.Controllers
                     a.AssociateAppraisals.Add(aa);
                 }
             }
-
+  
             viewModelAppraisals = Mapper.Map<IEnumerable<Appraisal>, IEnumerable<AppraisalViewModel>>(appraisals);
-            return View(viewModelAppraisals);
-        }
+            return View(viewModelAppraisals); 
+        }*/
 
 
         // GET: EditAppraisal

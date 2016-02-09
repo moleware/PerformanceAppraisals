@@ -1,26 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations.Schema;
-
+﻿using System.ComponentModel.DataAnnotations.Schema;
 namespace AssociateAppraisals.Model
 {
+    using System;
+    using System.Collections.Generic;
+
+    [Table("AssociateAppraisal")]
     public class AssociateAppraisal
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public AssociateAppraisal()
+        {
+            this.AssociateAppraisalQuestionAnswers = new HashSet<AssociateAppraisalQuestionAnswer>();
+        }
+
         public int AssociateAppraisalId { get; set; }
         public int AppraisalId { get; set; }
         public int AssociateId { get; set; }
-        public int PracticeGroupId { get; set; }
+        public Nullable<int> PracticeGroupId { get; set; }
 
-        
-        [ForeignKey("AssociateId")]
-        public virtual Associate Associate { get; set; }
-        [ForeignKey("AppraisalId")]
         public virtual Appraisal Appraisal { get; set; }
-
-        [NotMapped]
-        public virtual List<AppraisalQuestion> AppraisalQuestions { get; set; }
+        public virtual Associate Associate { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AssociateAppraisalQuestionAnswer> AssociateAppraisalQuestionAnswers { get; set; }
     }
 }

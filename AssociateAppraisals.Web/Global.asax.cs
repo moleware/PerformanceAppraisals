@@ -23,7 +23,7 @@ namespace AssociateAppraisals.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             // Autofac and Automapper configurations
-            Bootstrapper.Run();
+   //         Bootstrapper.Run();
         }
     }
 }

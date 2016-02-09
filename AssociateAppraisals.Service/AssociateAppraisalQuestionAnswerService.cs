@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AssociateAppraisals.Model;
-using AssociateAppraisals.Data;
-using AssociateAppraisals.Data.Repositories;
 using AssociateAppraisals.Data.Infrastructure;
+using AssociateAppraisals.Data.Repositories;
 
 namespace AssociateAppraisals.Service
 {
@@ -35,7 +34,7 @@ namespace AssociateAppraisals.Service
 
         public IEnumerable<AssociateAppraisalQuestionAnswer> GetAssociateAppraisalQuestionAnswers(int associateAppraisalId)
         {
-            return associateAppraisalQuestionAnswerRepository.GetMany(a => a.AssociateAppraisalId == associateAppraisalId).ToList();
+            return associateAppraisalQuestionAnswerRepository.GetMany(a => a.AssociateAppraisalId == associateAppraisalId);
         }
 
         public AssociateAppraisalQuestionAnswer GetAssociateAppraisalQuestionAnswer(int associateAppraisalQuestionAnswerId)
