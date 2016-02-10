@@ -79,6 +79,13 @@ namespace AssociateAppraisals.Helpers
             }
             return "Unknown User";
         }
+        public static string GetAssociateFullNameFromLogin(string login)
+        {
+            Employee empl = GetEmployeeFromLogin(login);
+            if (null == empl)
+                return "Unknown Employee: " + login;
+            return empl.FullName;
+        }
         public static Associate GetAssociateFromIdentity(IIdentity i)
         {
             return GetAssociateFromLogin(GetLoginFromIdentity(i));

@@ -160,6 +160,7 @@
     <Compile Include="ViewModels\AppraisalQuestionTypeViewModel.cs" />
     <Compile Include="ViewModels\AppraisalQuestionViewModel.cs" />
     <Compile Include="ViewModels\AssociateAppraisalViewModel.cs" />
+    <Compile Include="ViewModels\AssociatesViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\AssociateViewModel.cs" />
     <Compile Include="ViewModels\AppraisalViewModel.cs" />
@@ -167,6 +168,9 @@
     <Content Include="Views\Shared\_AppraisalQuestionTypes.cshtml" />
     <Content Include="Views\Shared\_AppraisalQuestionGroups.cshtml" />
     <Content Include="Views\Shared\_Appraisal.cshtml" />
+    <Content Include="Views\Shared\_ListAssociates.cshtml" />
+    <Content Include="Views\Administration\ListAppraisalQuestions - Copy.cshtml" />
+    <Content Include="Views\Shared\_ListQuestions.cshtml" />
     <None Include="Views\Shared\_ListAppraisals.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -216,12 +220,12 @@
     <Content Include="Views\Shared\Appraisal.cshtml" />
     <Content Include="Views\Shared\Question.cshtml" />
     <Content Include="Views\Administration\Index.cshtml" />
-    <Content Include="Views\Administration\EditAppraisalQuestions.cshtml" />
+    <Content Include="Views\Administration\ListAssociateAppraisals.cshtml" />
     <Content Include="Views\Home\EditAppraisal.cshtml" />
     <Content Include="Views\Home\Appraisals.cshtml" />
     <Content Include="Views\Home\MyAppraisals.cshtml" />
     <Content Include="Views\Shared\AssociateAppraisal.cshtml" />
-    <Content Include="Views\Administration\ListAssociateAppraisals.cshtml" />
+    <Content Include="Views\Administration\ListAppraisalQuestions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

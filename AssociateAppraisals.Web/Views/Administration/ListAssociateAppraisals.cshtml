@@ -1,21 +1,36 @@
-﻿@model IEnumerable<AssociateAppraisals.Web.ViewModels.AssociateAppraisalViewModel>
+﻿@model AssociateAppraisals.Model.AppraisalQuestion
 @{
-    ViewBag.Title = "List of " + Model.First().Associate.Login + "'s reviews.";
+    ViewBag.Title = "Associate Appraisals Administration";
+    var aqtvm = new AppraisalQuestionTypeViewModel();
+    var aqgvm = new AppraisalQuestionGroupViewModel();
 }
 
 <div class="jumbotron">
     <h1>@ViewBag.Title</h1>
-    <p class="lead">This is where administrators can view a list of all reviews of this associate.</p>
+    <p class="lead">This is where administrators can edit appraisal questions.</p>
 </div>
 
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = @Model.AppraisalId }))
+{
 <div class="row">
-     
-    @foreach (var item in Model)
-    {
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                @Html.Partial("AssociateAppraisal", item)
-            </div>
-        </div>
-    }
+    <h3>Appraisal @Model.AppraisalId</h3>
+
+    <div class="row">
+        <div class="col-sm-2">@Html.LabelFor(model => model.QuestionNumber)</div>
+        <div class="col-sm-10">@Html.EditorFor(model => model.QuestionNumber)</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">@Html.LabelFor(model => model.Question)</div>
+        <div class="col-sm-10">@Html.EditorFor(model => model.Question)</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">@Html.LabelFor(model => model.AppraisalQuestionType)</div>
+        <div class="col-sm-10">@Html.Partial("_AppraisalQuestionTypes", aqtvm)</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">@Html.LabelFor(model => model.AppraisalQuestionGroup)</div>
+        <div class="col-sm-10">@Html.Partial("_AppraisalQuestionGroups", aqgvm)</div>
+    </div>
 </div>
+
+}

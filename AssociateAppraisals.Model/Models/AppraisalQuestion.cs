@@ -13,6 +13,12 @@ namespace AssociateAppraisals.Model
             this.AssociateAppraisalQuestionAnswers = new HashSet<AssociateAppraisalQuestionAnswer>();
         }
 
+        public AppraisalQuestion(int appraisalId)
+        {
+            this.AssociateAppraisalQuestionAnswers = new HashSet<AssociateAppraisalQuestionAnswer>();
+            this.AppraisalId = AppraisalId;
+        }
+
         public int AppraisalQuestionId { get; set; }
         public int AppraisalId { get; set; }
         public Nullable<int> AppraisalQuestionGroupId { get; set; }

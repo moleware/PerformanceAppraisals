@@ -1,0 +1,33 @@
+﻿@model IEnumerable<AssociateAppraisals.Model.Associate>
+@using AssociateAppraisals.Model;
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            Associate Name
+        </th>
+        <th>
+            Number of Appraisals
+        </th>
+        <th>
+            Number of Matters Worked
+        </th>
+        <th></th>
+    </tr>
+    
+@foreach(var item in Model)
+{
+    <tr>
+        <td>
+            @AssociateAppraisals.Helpers.Helpers.GetAssociateFullNameFromLogin(item.Login)
+        </td>
+        <td>
+            @item.AssociateAppraisals.Count()
+        </td>
+        <td>
+            @item.AssociateWorks.Count()
+        </td>
+    </tr>
+}
+
+</table>

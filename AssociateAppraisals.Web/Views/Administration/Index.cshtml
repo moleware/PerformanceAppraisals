@@ -14,3 +14,7 @@
     <h1>Here be the appraisals.</h1>
     @Html.Partial("_ListAppraisals", Model)
 </div>
+<div class="row">
+    <h1>Here be the associates.</h1>
+    @Html.Partial("_ListAssociates", new AssociatesViewModel().Associates)
+</div>

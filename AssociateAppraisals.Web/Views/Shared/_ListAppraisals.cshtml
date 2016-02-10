@@ -28,8 +28,8 @@
             @Html.DisplayFor(modelItem => item.EndDate)
         </td>
         <td>
-            @Html.ActionLink("Edit Questions", "EditAppraisalQuestions", new { id = item.AppraisalId }) |
-            @Html.ActionLink("View All Appraisals", "ListAssociateAppraisals", new { id = item.AppraisalId }) |
+            @Html.ActionLink("Edit Questions", "ListAppraisalQuestions", new { id = item.AppraisalId }) |
+            @Html.ActionLink("View All Appraisals", "ListAssociateAppraisals", new { id = item.AppraisalId }) 
         </td>
     </tr>
 }

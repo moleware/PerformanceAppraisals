@@ -1,0 +1,30 @@
+﻿@model IEnumerable<AssociateAppraisals.Model.AppraisalQuestion>
+@{
+    ViewBag.Title = "List of all questions for appraisal year [ReviewYear].";
+}
+
+<div class="jumbotron">
+    <h1>@ViewBag.Title</h1>
+    <p class="lead">This is where administrators can view a list of all questions for this year's appraisal.</p>
+</div>
+
+<div class="row">
+     
+    @if (0 == Model.Count())
+    {
+        <div>
+            No appraisals to list! 
+        </div>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @Html.Partial("Question", item)
+                </div>
+            </div>
+        }
+    }
+</div>

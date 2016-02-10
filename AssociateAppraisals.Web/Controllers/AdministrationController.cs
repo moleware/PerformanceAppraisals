@@ -42,11 +42,12 @@ namespace AssociateAppraisals.Web.Controllers
         }
 
         // GET: EditAppraisalQuestions
-        public ActionResult EditAppraisalQuestions(int id)
+        public ActionResult ListAppraisalQuestions(int id)
         {
-            AppraisalQuestion aq = new AppraisalQuestion();
-            aq.AppraisalId = id;
-            return View(aq);
+            ViewBag.appraisalId = id;
+            entities.AppraisalQuestions.ToList();
+
+            return View(entities.AppraisalQuestions.ToList());
         }
 
         // POST: EditAppraisalQuestions
