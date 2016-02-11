@@ -41,7 +41,7 @@ namespace AssociateAppraisals.Web.Controllers
             return View();
         }
 
-        // GET: EditAppraisalQuestions
+        // GET: ListAppraisalQuestions
         public ActionResult ListAppraisalQuestions(int id)
         {
             ViewBag.appraisalId = id;
@@ -50,26 +50,35 @@ namespace AssociateAppraisals.Web.Controllers
             return View(entities.AppraisalQuestions.ToList());
         }
 
-        // POST: EditAppraisalQuestions
+        // GET: CreateAppraisalQuestion
+        public ActionResult CreateAppraisalQuestion(int id)
+        {
+            AppraisalQuestion aq = new AppraisalQuestion();
+            aq.AppraisalId = id;
+            return View(aq);
+        }
+
+        // POST: CreateAppraisalQuestion
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AppraisalId, AppraisalQuestionGroupId, AppraisalQuestionTypeId, Question, QuestionNumber")]AppraisalQuestion question)
+        public ActionResult CreateAppraisalQuestion([Bind(Include = "AppraisalId, AppraisalQuestionGroupId, AppraisalQuestionTypeId, Question, QuestionNumber")]AppraisalQuestion newQuestion)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    entities.AppraisalQuestions.Add(question);
+                    entities.AppraisalQuestions.Add(newQuestion);
                     entities.SaveChanges();
-                    return RedirectToAction("Index", new { id = question.AppraisalId } );
+                    return RedirectToAction("ListAppraisalQuestions", "Administration", new { id = newQuestion.AppraisalId } );
                 }
             }
             catch (DataException /* dex */)
             {
                 //Log the error (uncomment dex variable name and add a line here to write a log.
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                ModelState.AddModelError("SAVE_ERR", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
-            return View(question);
+            
+            return View(newQuestion);
         }
     }
 }

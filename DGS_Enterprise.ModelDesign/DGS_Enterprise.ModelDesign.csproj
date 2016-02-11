@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F4A348B2-AE80-4C0D-923A-339FA9645BA2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DGS_Enterprise.ModelDesign</RootNamespace>
+    <AssemblyName>DGS_Enterprise.ModelDesign</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\AreaOfExpertise.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BusinessDevelopmentReport.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChangeLog.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientlinkPermissionsList.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ComputerApplicationList.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ComputerDataImport.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ComputerIncomingRequest.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ComputerInfo.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ComputerPeripheralInfo.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ComputerPeripheralList.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ComputerStatusList.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ComputerSystemList.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ComputerTicketEvent.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ComputerTicketInfo.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ComputerUsageStatusList.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CorporateRole.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CoverageLevel.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DavisgramLink.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DavisgramLinkCategory.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Department.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DGS_Enterprise.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DGS_Enterprise.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DGS_Enterprise.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DGS_Enterprise.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DGS_Enterprise.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dtproperty.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Employee.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmployeeLanguage.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmployeeType.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ExemptStatu.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GradLevel.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GuideBookEmployeeDepartment.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GuideBookPeopleSearchCriteria.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HireAndTerminationDate.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InterfaceObject.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Key.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Language.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LawyerAreaOfExpertise.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LawyerBarNumber.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LawyerEmployee.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PhotoGalleryCategory.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PracticeGroup.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecruitingApplicant.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecruitingApplicantAddress.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecruitingApplicantEmail.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecruitingApplicantPhone.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecruitingCorrespondence.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecruitingCorrespondenceType.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecruitingEmailType.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecruitingEvaluationType.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecruitingHeadhunter.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecruitingHRApplicantEmail.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecruitingHRApplicantPhone.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecruitingHRApplication.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecruitingHRFieldOFLaw.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecruitingHRHeadHunter.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecruitingHRPosition.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecruitingInterviewForm.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecruitingInterviewLineItem.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecruitingPhoneType.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecruitingPosition.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecruitingSchool.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecruitingSchoolAttendance.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecruitingYearInSchool.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Salutation.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StateAbbreviation.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SystemSetting.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TimeOffRequest.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TimeOffRequestCoverage.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TimeOffRequestHour.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TimeOffRequestType.cs">
+      <DependentUpon>DGS_Enterprise.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="Models\DGS_Enterprise.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DGS_Enterprise.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\DGS_Enterprise.edmx.diagram">
+      <DependentUpon>DGS_Enterprise.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\DGS_Enterprise.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DGS_Enterprise.edmx</DependentUpon>
+      <LastGenOutput>DGS_Enterprise.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DGS_Enterprise.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DGS_Enterprise.edmx</DependentUpon>
+      <LastGenOutput>DGS_Enterprise.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

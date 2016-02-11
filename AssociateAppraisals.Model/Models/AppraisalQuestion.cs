@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace AssociateAppraisals.Model
 {
     using System;
@@ -13,17 +14,16 @@ namespace AssociateAppraisals.Model
             this.AssociateAppraisalQuestionAnswers = new HashSet<AssociateAppraisalQuestionAnswer>();
         }
 
-        public AppraisalQuestion(int appraisalId)
-        {
-            this.AssociateAppraisalQuestionAnswers = new HashSet<AssociateAppraisalQuestionAnswer>();
-            this.AppraisalId = AppraisalId;
-        }
-
         public int AppraisalQuestionId { get; set; }
+        [Required]
         public int AppraisalId { get; set; }
         public Nullable<int> AppraisalQuestionGroupId { get; set; }
         public Nullable<int> AppraisalQuestionTypeId { get; set; }
+        [Required]
+        [StringLength(255)]
         public string Question { get; set; }
+        [Required]
+        [Range(1, 100, ErrorMessage = "Please enter a valid number (1 - 100).")]     // They shouldnt have over 100 questions on the appraisal, must be typo
         public Nullable<int> QuestionNumber { get; set; }
 
         public virtual Appraisal Appraisal { get; set; }

@@ -19,6 +19,7 @@ namespace AssociateAppraisals.Data
         public DbSet<Associate> Associates { get; set; }
         public DbSet<AssociateAppraisal> AssociateAppraisals { get; set; }
         public DbSet<AssociateAppraisalQuestionAnswer> AssociateAppraisalQuestionAnswers { get; set; }
+        public DbSet<AssociateWork> AssociateWorks { get; set; }
 
         public virtual void Commit()
         {
@@ -34,6 +35,7 @@ namespace AssociateAppraisals.Data
             modelBuilder.Configurations.Add(new AssociateConfiguration());
             modelBuilder.Configurations.Add(new AssociateAppraisalConfiguration());
             modelBuilder.Configurations.Add(new AssociateAppraisalQuestionAnswerConfiguration());
+            modelBuilder.Configurations.Add(new AssociateWorkConfiguration());
         }
     }
 }

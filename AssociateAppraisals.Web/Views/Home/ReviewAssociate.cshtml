@@ -1,0 +1,36 @@
+﻿@model AssociateAppraisals.Model.AssociateAppraisal
+@{
+    ViewBag.Title = "Associate Appraisals Administration";
+    var aqtvm = new AppraisalQuestionTypeViewModel();
+    var aqgvm = new AppraisalQuestionGroupViewModel();
+}
+
+<div class="jumbotron">
+    <h1>@ViewBag.Title</h1>
+    <p class="lead">This is where partners review an associate.</p>
+</div>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = @Model.AppraisalId }))
+{
+<div class="row">
+    <h3>Appraisal @Model.AppraisalId</h3>
+
+    <div class="row">
+        <div class="col-sm-2">@Html.LabelFor(model => model.QuestionNumber)</div>
+        <div class="col-sm-10">@Html.EditorFor(model => model.QuestionNumber)</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">@Html.LabelFor(model => model.Question)</div>
+        <div class="col-sm-10">@Html.EditorFor(model => model.Question)</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">@Html.LabelFor(model => model.AppraisalQuestionType)</div>
+        <div class="col-sm-10">@Html.Partial("_AppraisalQuestionTypes", aqtvm)</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">@Html.LabelFor(model => model.AppraisalQuestionGroup)</div>
+        <div class="col-sm-10">@Html.Partial("_AppraisalQuestionGroups", aqgvm)</div>
+    </div>
+</div>
+
+}

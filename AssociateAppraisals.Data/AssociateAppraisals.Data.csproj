@@ -53,6 +53,7 @@
     <Compile Include="AssociateAppraisalsSeedData.cs" />
     <Compile Include="Configuration\AssociateAppraisalConfiguration.cs" />
     <Compile Include="Configuration\AssociateAppraisalQuestionAnswerConfiguration.cs" />
+    <Compile Include="Configuration\AssociateWorkConfiguration.cs" />
     <Compile Include="Configuration\AssociateConfiguration.cs" />
     <Compile Include="Configuration\AppraisalConfiguration.cs" />
     <Compile Include="Configuration\AppraisalQuestionTypeConfiguration.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Repositories\AssociateAppraisalRepository.cs" />
     <Compile Include="Repositories\AssociateAppraisalQuestionAnswerRepository.cs" />
     <Compile Include="Repositories\AppraisalQuestionRepository.cs" />
+    <Compile Include="Repositories\AssociateWorkRepository.cs" />
     <Compile Include="Repositories\AssociateRepository.cs" />
     <Compile Include="Repositories\AppraisalRepository.cs" />
   </ItemGroup>

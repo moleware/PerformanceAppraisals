@@ -14,7 +14,7 @@ namespace DGS_Enterprise.Data
         public EmployeeConfiguration()
         {
             ToTable("Employee");
-            Property(a => a.EmployeeId).IsRequired();
+            Property(a => a.EmployeeID).IsRequired();
         }
     }
 }

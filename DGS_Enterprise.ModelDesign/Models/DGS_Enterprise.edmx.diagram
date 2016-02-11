@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4d3605b7261c4ce6a07faab3370c2172" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.AreaOfExpertise" Width="1.5" PointX="11.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.BusinessDevelopmentReport" Width="1.5" PointX="10.5" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.ComputerInfo" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.CorporateRole" Width="1.5" PointX="0.75" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.CoverageLevel" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.DavisgramLink" Width="1.5" PointX="11" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.DavisgramLinkCategory" Width="1.5" PointX="8.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.Department" Width="1.5" PointX="3.75" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.dtproperty" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.Education" Width="1.5" PointX="10.5" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.Employee" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.EmployeeType" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.ExemptStatu" Width="1.5" PointX="0.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.GradLevel" Width="1.5" PointX="8.25" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.GuideBookEmployeeDepartment" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.GuideBookPeopleSearchCriteria" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.HireAndTerminationDate" Width="1.5" PointX="5.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.InterfaceObject" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.Key" Width="1.5" PointX="5.25" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.Language" Width="1.5" PointX="6" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.LawyerAreaOfExpertise" Width="1.5" PointX="13.5" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.LawyerBarNumber" Width="1.5" PointX="10.5" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.LawyerEmployee" Width="1.5" PointX="8.25" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.PhotoGalleryCategory" Width="1.5" PointX="0.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.PracticeGroup" Width="1.5" PointX="6" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.sysdiagram" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.TimeOffRequest" Width="1.5" PointX="5.25" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.TimeOffRequestCoverage" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.TimeOffRequestHour" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.TimeOffRequestType" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.ChangeLog" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.ClientlinkPermissionsList" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.ComputerApplicationList" Width="1.5" PointX="12.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.ComputerDataImport" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.ComputerIncomingRequest" Width="1.5" PointX="13.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.ComputerPeripheralInfo" Width="1.5" PointX="14.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.ComputerPeripheralList" Width="1.5" PointX="15.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.ComputerStatusList" Width="1.5" PointX="15.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.ComputerSystemList" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.ComputerTicketEvent" Width="1.5" PointX="16.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.ComputerTicketInfo" Width="1.5" PointX="16.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.ComputerUsageStatusList" Width="1.5" PointX="17.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.EmployeeLanguage" Width="1.5" PointX="8.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.RecruitingApplicant" Width="1.5" PointX="17.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.RecruitingApplicantAddress" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.RecruitingApplicantEmail" Width="1.5" PointX="18.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.RecruitingApplicantPhone" Width="1.5" PointX="18.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.RecruitingCorrespondence" Width="1.5" PointX="19.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.RecruitingCorrespondenceType" Width="1.5" PointX="12.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.RecruitingEmailType" Width="1.5" PointX="19.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.RecruitingEvaluationType" Width="1.5" PointX="14.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.RecruitingHeadhunter" Width="1.5" PointX="19.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.RecruitingHRApplicantEmail" Width="1.5" PointX="16.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.RecruitingHRApplicantPhone" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.RecruitingHRApplication" Width="1.5" PointX="20.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.RecruitingHRFieldOFLaw" Width="1.5" PointX="18.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.RecruitingHRHeadHunter" Width="1.5" PointX="20.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.RecruitingHRPosition" Width="1.5" PointX="21.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.RecruitingInterviewForm" Width="1.5" PointX="21.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.RecruitingInterviewLineItem" Width="1.5" PointX="21.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.RecruitingPhoneType" Width="1.5" PointX="22.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.RecruitingPosition" Width="1.5" PointX="22.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.RecruitingSchoolAttendance" Width="1.5" PointX="12.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.RecruitingSchool" Width="1.5" PointX="22.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.RecruitingYearInSchool" Width="1.5" PointX="14.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.Salutation" Width="1.5" PointX="22.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.StateAbbreviation" Width="1.5" PointX="22.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DGS_EnterpriseModel.SystemSetting" Width="1.5" PointX="0.75" PointY="23.75" IsExpanded="true" />
+        <AssociationConnector Association="DGS_EnterpriseModel.AreaOfExpertise_LawyerAreaOfExpertise_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.FK_BusinessDevelopmentReport_LawyerEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.CorporateRole_Employee_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.CoverageLevel_TimeOffRequestCoverage_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.FK_DavisgramLink_DavisgramLinkCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.FK_PracticeGroup_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.FK_Education_GradLevel" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.FK_Education_LawyerEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.FK_Employee_ExemptStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.FK_Employee_GuideBookEmployeeDepartment" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.FK_Employee_PhotoGalleryCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.FK_EmployeeLanguage_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.FK_HireAndTerminationDates_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.FK_Keys_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.FK_LawyerEmployee_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.FK_LawyerEmployee_Employee1" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.FK_ManagerEmployee_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.FK_SuperManagerEmployee_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.FK_TimeOffRequest_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.FK_EmployeeLanguage_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.LawyerEmployee_LawyerAreaOfExpertise_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.LawyerEmployee_LawyerBarNumber_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.FK_LawyerEmployee_PracticeGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.TimeOffRequestType_TimeOffRequestHour_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.EmployeeInEmployeeType" ManuallyRouted="false" />
+        <AssociationConnector Association="DGS_EnterpriseModel.GuidebookDepartmentAdministration" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -12,13 +12,10 @@
             </a>
         }
         else
-        {
-            <a href="@Url.Action("MyAppraisals","Home")">
-            
-                <h3 class="media-heading">
-                    Appraisal @Model.AppraisalId
-                </h3>
-            </a>
+        {   
+            <h3 class="media-heading">
+                Appraisal @Model.AppraisalId
+            </h3>
         }
         <p>Review Year: @Model.ReviewYear</p>
         <p>Start Date: @(((DateTime)Model.StartDate).ToShortDateString())</p>

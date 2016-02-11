@@ -1,30 +1,39 @@
-﻿@model IEnumerable<AssociateAppraisals.Model.Appraisal>
+﻿@model AssociateAppraisals.Model.AppraisalQuestion
 @{
     ViewBag.Title = "Associate Appraisals Administration";
+    var aqtvm = new AppraisalQuestionTypeViewModel();
+    var aqgvm = new AppraisalQuestionGroupViewModel();
 }
 
 <div class="jumbotron">
     <h1>@ViewBag.Title</h1>
-    <p class="lead">This is where administrators can edit appraisal questions.</p>
+    <p class="lead">This is where administrators can add new appraisal questions.</p>
 </div>
 
-@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "CreateReservationForm" }))
-{
-<div class="row">
-    <h3>Appraisal @Model.First().AppraisalId</h3>
-
+@using (Html.BeginForm("CreateAppraisalQuestion", "Administration", FormMethod.Post))
+{   @Html.AntiForgeryToken()
+    @Html.ValidationMessage("SAVE_ERR")
+    @Html.HiddenFor(model => model.AppraisalId)
     <div class="row">
-    @foreach (var item in Model)
-    {
-        foreach (var question in item.AppraisalQuestions)
-        {
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    @Html.Partial("Question", question)
-                </div>
-            </div>
-        }
-    }
+        <h3>Appraisal @Model.AppraisalId</h3>
+
+        <div class="row">
+            <div class="col-sm-3">@Html.LabelFor(model => model.QuestionNumber)</div>
+            <div class="col-sm-7">@Html.TextBoxFor(model => model.QuestionNumber)</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">@Html.LabelFor(model => model.Question)</div>
+            <div class="col-sm-7">@Html.TextBoxFor(model => model.Question)</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">@Html.LabelFor(model => model.AppraisalQuestionType)</div>
+            <div class="col-sm-7">@Html.Partial("_AppraisalQuestionTypes", aqtvm)</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">@Html.LabelFor(model => model.AppraisalQuestionGroup)</div>
+            <div class="col-sm-3">@Html.Partial("_AppraisalQuestionGroups", aqgvm)</div>
+            <div class="col-sm-4">@Html.ActionLink("Add new question group", "CreateAppraisalQuestionGroup", "Administration", new { id = ViewBag.appraisalId }, new { @class = "btn btn-default" })</div>
+        </div>
     </div>
-</div>
+    <input type="submit" value="Save" />
 }

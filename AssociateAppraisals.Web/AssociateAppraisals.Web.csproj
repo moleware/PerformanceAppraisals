@@ -72,6 +72,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -152,6 +153,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Helpers.cs" />
+    <Compile Include="Helpers\Session.cs" />
+    <Compile Include="Helpers\UserType.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
     <Compile Include="Mappings\DomainToViewModelMappingProfile .cs" />
     <Compile Include="Mappings\ViewModelToDomainMappingProfile .cs" />
@@ -169,8 +172,10 @@
     <Content Include="Views\Shared\_AppraisalQuestionGroups.cshtml" />
     <Content Include="Views\Shared\_Appraisal.cshtml" />
     <Content Include="Views\Shared\_ListAssociates.cshtml" />
-    <Content Include="Views\Administration\ListAppraisalQuestions - Copy.cshtml" />
+    <Content Include="Views\Administration\ListAppraisalQuestions.cshtml" />
     <Content Include="Views\Shared\_ListQuestions.cshtml" />
+    <Content Include="Views\Home\AssociatesForReview.cshtml" />
+    <Content Include="Views\Home\ReviewAssociate.cshtml" />
     <None Include="Views\Shared\_ListAppraisals.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -220,12 +225,12 @@
     <Content Include="Views\Shared\Appraisal.cshtml" />
     <Content Include="Views\Shared\Question.cshtml" />
     <Content Include="Views\Administration\Index.cshtml" />
-    <Content Include="Views\Administration\ListAssociateAppraisals.cshtml" />
+    <Content Include="Views\Administration\ListAssociateAppraisals1.cshtml" />
     <Content Include="Views\Home\EditAppraisal.cshtml" />
     <Content Include="Views\Home\Appraisals.cshtml" />
     <Content Include="Views\Home\MyAppraisals.cshtml" />
     <Content Include="Views\Shared\AssociateAppraisal.cshtml" />
-    <Content Include="Views\Administration\ListAppraisalQuestions.cshtml" />
+    <Content Include="Views\Administration\ListAssociateAppraisals.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

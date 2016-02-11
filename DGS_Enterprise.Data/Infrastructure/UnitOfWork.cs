@@ -21,9 +21,9 @@ namespace DGS_Enterprise.Data.Infrastructure
             get { return dbContext ?? (dbContext = dbFactory.Init()); }
         }
 
-        public void Commit()
+ /*       public void Commit()      // We won't be committing anything back to the DB from here.
         {
             DbContext.Commit();
-        }
+        }*/
     } 
 }

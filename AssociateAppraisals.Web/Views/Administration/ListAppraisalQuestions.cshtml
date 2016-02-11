@@ -1,30 +1,43 @@
 ﻿@model IEnumerable<AssociateAppraisals.Model.AppraisalQuestion>
 @{
-    ViewBag.Title = "List of all questions for appraisal year [ReviewYear].";
+    ViewBag.Title = "Associate Appraisals Administration";
+    var aqtvm = new AppraisalQuestionTypeViewModel();
+    var aqgvm = new AppraisalQuestionGroupViewModel();
 }
 
 <div class="jumbotron">
     <h1>@ViewBag.Title</h1>
-    <p class="lead">This is where administrators can view a list of all questions for this year's appraisal.</p>
+    <p class="lead">This is where administrators can edit appraisal questions.</p>
 </div>
 
-<div class="row">
-     
-    @if (0 == Model.Count())
+@Html.ActionLink("Add new question", "CreateAppraisalQuestion", "Administration", new { id = ViewBag.appraisalId }, new { @class = "btn btn-default" })
+@if(0 == Model.Count())
+{
+    <div>No questions to list!</div>
+}
+else
+{   <h3>Appraisal @ViewBag.appraisalId</h3>
+    foreach (var item in Model)
     {
-        <div>
-            No appraisals to list! 
+    <div class="row">    
+        <div class="row">
+            <div class="col-sm-3">@Html.LabelFor(modelItem => item.QuestionNumber)</div>
+            <div class="col-sm-7">@item.QuestionNumber</div>
         </div>
+        <div class="row">
+            <div class="col-sm-3">@Html.LabelFor(modelItem => item.Question)</div>
+            <div class="col-sm-7">@item.Question</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">@Html.LabelFor(modelItem => item.AppraisalQuestionType)</div>
+            <div class="col-sm-7">@item.AppraisalQuestionType.QuestionType</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">@Html.LabelFor(modelItem => item.AppraisalQuestionGroup)</div>
+            <div class="col-sm-7">
+                @((null == item.AppraisalQuestionGroupId) ? "" : item.AppraisalQuestionGroup.Description)</div>
+        </div>
+    </div>
+    <div class="divider">&nbsp;</div>
     }
-    else
-    {
-        foreach (var item in Model)
-        {
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    @Html.Partial("Question", item)
-                </div>
-            </div>
-        }
-    }
-</div>
+}

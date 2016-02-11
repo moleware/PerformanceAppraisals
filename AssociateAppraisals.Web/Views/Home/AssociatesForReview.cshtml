@@ -1,0 +1,22 @@
+﻿@model IEnumerable<AssociateAppraisals.Model.AssociateAppraisal>
+@{
+    ViewBag.Title = "My Associates";
+}
+
+<div class="jumbotron">
+    <h1>@ViewBag.Title</h1>
+    <p class="lead">This page lists all associates to be reviewed by the logged-in partner.</p>
+</div>
+
+<div class="row">
+    @foreach (var item in Model)       // This is where we display each appraisal the associate has particpated in
+    {
+        <a href="@Url.Action("ReviewAssociate","Home", new { associateId = item.AssociateId })">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @AssociateAppraisals.Helpers.Helpers.GetAssociateFullNameFromLogin(item.Associate.Login)
+                </div>
+            </div>
+        </a>
+    }
+</div>

@@ -25,7 +25,7 @@ namespace AssociateAppraisals.Helpers
                 httpContext.Items.Remove(IS_AUTHORIZED);
             }
             httpContext.Items.Add(IS_AUTHORIZED, isAuthorized);
-            return isAuthorized;
+            return isAuthorized; 
         }
 
         public override void OnAuthorization(AuthorizationContext filterContext)
@@ -68,6 +68,23 @@ namespace AssociateAppraisals.Helpers
 
     public class Helpers
     {
+        public static UserType.UserTypes GetUserType(IIdentity user)
+        {
+            DGS_EnterpriseEntities entities = new DGS_EnterpriseEntities();
+            List<EmployeeType> emplTypes = entities.Employees.Where(e => e.LoginName == GetLoginFromIdentity(user)).FirstOrDefault().EmployeeTypes.ToList();
+
+            UserType.UserTypes userType = UserType.UserTypes.NotAuthorized;
+            foreach (EmployeeType et in emplTypes)
+            {
+                if (et.Description == "Associate")
+                    userType = UserType.UserTypes.Associate;
+                if (et.Description == "Partner")
+                    userType = UserType.UserTypes.Partner;
+            }
+
+            return userType;
+        } 
+
         // WARNING - These should be updated once DGS_Enterprise is represented/modeled
         public static string GetAssociateFirstNameFromIdentity(IIdentity i)
         {
@@ -77,7 +94,7 @@ namespace AssociateAppraisals.Helpers
                 Employee empl = GetEmployeeFromLogin(ass.Login);
                 return empl.FirstName;
             }
-            return "Unknown User";
+            return "Unknown Associate";
         }
         public static string GetAssociateFullNameFromLogin(string login)
         {

@@ -8,6 +8,8 @@ using AssociateAppraisals.Web.ViewModels;
 using AssociateAppraisals.Data.Repositories;
 using AssociateAppraisals.Data;
 using AssociateAppraisals.Service;
+using System.Runtime.Caching;
+using System.IO;
 
 namespace AssociateAppraisals.Web.Controllers
 {
@@ -16,101 +18,69 @@ namespace AssociateAppraisals.Web.Controllers
         private AssociateAppraisalsEntities entities = new AssociateAppraisalsEntities();
         private readonly IAppraisalService appraisalService;
 
+        private void InitializeCache()
+        { 
+            ObjectCache cache = MemoryCache.Default;
+            CacheItemPolicy policy = new CacheItemPolicy();
+            policy.AbsoluteExpiration = DateTimeOffset.Now.AddDays(2);  // Our user cache expires in 48 hours
+        }
+
         public HomeController()
         {
+            if (null != User)
+            {
+                // Initialize our custom session.
+                Helpers.Session s = new Helpers.Session(User.Identity);
+            }
         }
 
         public HomeController(IAppraisalService appraisalService)
         {
-            
+            // WARNING - My constructors don't seem to do ANYTHING....  So this is completely useless.
             this.appraisalService = appraisalService;
         }
 
         // GET: Home
         public ActionResult Index()
         {
-            ViewBag.LoggedInUser = Helpers.Helpers.GetAssociateFirstNameFromIdentity(User.Identity);
-            IEnumerable<Appraisal> appraisals = entities.Appraisals.ToList();
+            // Pass the currently logged in user since I don't have a better way of doing this yet.
+            Associate a = Helpers.Helpers.GetAssociateFromIdentity(User.Identity);
+            ViewBag.LoggedInUser = Helpers.Helpers.GetAssociateFullNameFromLogin(a.Login);
+            ViewBag.AssociateId = a.AssociateId;
+            
+            // Pass in the current appraisalId because we shouldn't be using this app outside of the February - July window.
+            ViewBag.AppraisalId = entities.Appraisals.Where(aa => aa.ReviewYear == DateTime.Now.Year).FirstOrDefault().AppraisalId;
 
+            IEnumerable<Appraisal> appraisals = entities.Appraisals.ToList();
             return View(appraisals);
         }
 
-        //GET: Appraisals
-  /*       public ActionResult MyAppraisals()      // This view should be displaying appraisals for the year clicked... Pass in appraisalId
+        // GET: IdentifyPartners - Takes the user to a page where they can identify the partners they worked with most
+        public ActionResult IdentifyPartners(int associateId, int appraisalId)
         {
-           IEnumerable<AppraisalViewModel> viewModelAppraisals;
-            IEnumerable<AssociateAppraisalViewModel> viewModelAssociateAppraisals;
-            IEnumerable<Appraisal> appraisals;
-            IEnumerable<AppraisalQuestion> questions;
-            IEnumerable<AssociateAppraisal> associateAppraisals;
-            AssociateAppraisalQuestionAnswer answer;
+            return View(entities.AssociateWorks.ToList());
+        }
 
-            // 1) Get the currently logged in Associate
-            Associate associate = Helpers.Helpers.GetAssociateFromIdentity(User.Identity);
+        // GET: AssociatesForReview - Takes the partner to a page where they see a list of all associates they have worked with.
+        public ActionResult AssociatesForReview(int appraisalId)
+        {
+            IEnumerable<AssociateAppraisal> aa = entities.AssociateAppraisals.ToList();
+            return View(aa);
+        }
 
-            // 2) Get a list of all appraisals
-            appraisals = appraisalService.GetAppraisals().ToList();
-            foreach (Appraisal a in appraisals)
-            {
-                // 3) Get all AssociateAppraisals for this Associate
-                associateAppraisals = associateAppraisalService.GetAssociateAppraisals(associate.AssociateId, a.AppraisalId);
-
-                // 4) Add questions for each appraisal
-                foreach (AssociateAppraisal aa in associateAppraisals)
-                {
-                    // 5) Get all questions for each appraisal
-                    questions = appraisalQuestionService.GetAppraisalQuestions(aa.AppraisalId);
-
-                    // 6) Add the questions to the appraisal
-                    foreach (AppraisalQuestion q in questions)
-                    {
-                        // 7) Get the Associate's answer to this question
-                        answer = associateAppraisalQuestionAnswerService.GetAssociateAppraisalQuestionAnswer(q.AppraisalQuestionId, aa.AssociateAppraisalId);
-
-                        // 8) Add the answer to the question
-                        q.AssociateAppraisalQuestionAnswer = answer;
-
-                        // 9) Add the question to the AssociateAppraisal
-                        aa.AppraisalQuestions.Add(q);
-                    }
-
-                    // 10) add the AssociateAppraisal to the Appraisal
-                    a.AssociateAppraisals.Add(aa);
-                }
-            }
-  
-            viewModelAppraisals = Mapper.Map<IEnumerable<Appraisal>, IEnumerable<AppraisalViewModel>>(appraisals);
-            return View(viewModelAppraisals); 
-        }*/
-
-
-        // GET: EditAppraisal
-        /*  public ActionResult EditAppraisal(int appraisalId)
-          {
-              IEnumerable<AppraisalViewModel> viewModelAppraisals;
-              IEnumerable<Appraisal> appraisals;
-              IEnumerable<AppraisalQuestion> questions;
-
-              // This seems wrong.... It is known that we'll only get one result back, so why loop?
-              appraisals = appraisalService.GetAppraisals().Where(a => a.AppraisalId == appraisalId);
-              foreach (Appraisal a in appraisals)
-              {
-                  questions = appraisalQuestionService.GetAppraisalQuestions(a.AppraisalId);
-                  foreach (AppraisalQuestion q in questions)
-                  {
-                      a.Questions.Add(q);
-                  }
-              }
-
-              Associate ass = Helpers.Helpers.GetAssociateFromIdentity(User.Identity);
-
-              viewModelAppraisals = Mapper.Map<IEnumerable<Appraisal>, IEnumerable<AppraisalViewModel>>(appraisal);            
-          }*/
+        // GET: ReviewAssociate - This page allows a partner to review an associate.  This is the whole point of the application.
+        public ActionResult ReviewAssociate(int associateId, int appraisalId)
+        {
+            AssociateAppraisal aa = new AssociateAppraisal();
+            aa.AssociateId = associateId;
+            aa.AppraisalId = appraisalId;
+            aa.Appraisal = entities.Appraisals.Include("AppraisalQuestion").Where(a => a.AppraisalId == appraisalId).FirstOrDefault();
+            aa.Associate = entities.Associates.Include("AssociateWork").Where(a => a.AssociateId == associateId).FirstOrDefault();
+            return View(aa);
+        }
 
 
         /*  We can worry about searching and filtering once the app works.
-
-
 
 
             public ActionResult Filter(string category, string gadgetName)

@@ -14,7 +14,7 @@ namespace DGS_Enterprise.Data.Repositories
 
         public Employee GetEmployeeById(int employeeId)
         {
-            var employee = this.DbContext.Employees.Where(a => a.EmployeeId == employeeId).FirstOrDefault();
+            var employee = this.DbContext.Employees.Where(a => a.EmployeeID == employeeId).FirstOrDefault();
             return employee;
         }
         public Employee GetEmployeeByLogin(string login)
