@@ -22,6 +22,17 @@ namespace DGS_Enterprise.Data
         {
             // It says not to comment out this line....but I'm going to need a good reason cuz this breaks my app.
             //     throw new UnintentionalCodeFirstException();
+
+            // This is where we map out the many-to-many relationships, as well as other exceptions
+            modelBuilder.Entity<Employee>()
+                .HasMany<EmployeeType>(e => e.EmployeeTypes)
+                .WithMany(et => et.Employees)
+                .Map(ete =>
+                    {
+                        ete.MapLeftKey("EmployeeID");
+                        ete.MapRightKey("EmployeeTypeID");
+                        ete.ToTable("EmployeeInEmployeeType");
+                    });
         }
 
         public virtual DbSet<AreaOfExpertise> AreaOfExpertises { get; set; }

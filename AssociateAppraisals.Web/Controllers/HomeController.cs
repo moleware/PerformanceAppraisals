@@ -27,26 +27,26 @@ namespace AssociateAppraisals.Web.Controllers
 
         public HomeController()
         {
-            if (null != User)
-            {
-                // Initialize our custom session.
-                Helpers.Session s = new Helpers.Session(User.Identity);
-            }
+            // Definitely hitting this, but don't have a User context yet...
         }
 
         public HomeController(IAppraisalService appraisalService)
         {
-            // WARNING - My constructors don't seem to do ANYTHING....  So this is completely useless.
+            // WARNING - I don't think we'll ever get here...
             this.appraisalService = appraisalService;
         }
 
         // GET: Home
         public ActionResult Index()
         {
+            // Initialize our custom session.
+            Helpers.Session s = new Helpers.Session(User.Identity);
+
             // Pass the currently logged in user since I don't have a better way of doing this yet.
-            Associate a = Helpers.Helpers.GetAssociateFromIdentity(User.Identity);
-            ViewBag.LoggedInUser = Helpers.Helpers.GetAssociateFullNameFromLogin(a.Login);
-            ViewBag.AssociateId = a.AssociateId;
+            //    Associate a = Helpers.Helpers.GetAssociateFromIdentity(User.Identity);
+            ViewBag.LoggedInUser = s.FullName;
+            ViewBag.UserType = s.UserType;
+            ViewBag.AssociateId = s.AssociateId;
             
             // Pass in the current appraisalId because we shouldn't be using this app outside of the February - July window.
             ViewBag.AppraisalId = entities.Appraisals.Where(aa => aa.ReviewYear == DateTime.Now.Year).FirstOrDefault().AppraisalId;

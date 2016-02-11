@@ -9,6 +9,7 @@
 </div>
 
 @* We need to be able to identify the user's role.  Are they associate? partner? admin? not authorized? *@
+
 <a href="@Url.Action("IdentifyPartners", "Home", new { associateId = ViewBag.AssociateId, appraisalId = ViewBag.AppraisalId })">Identify Partners</a>
 
 @* If the user is a partner, take them directly to the partner home, no button *@

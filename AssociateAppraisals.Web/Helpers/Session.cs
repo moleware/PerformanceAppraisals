@@ -18,6 +18,11 @@ namespace AssociateAppraisals.Helpers
         { }
         public Session(IIdentity user)
         {
+            InitializeSession(user);
+        }
+
+        public void InitializeSession(IIdentity user)
+        {
             Associate ass = Helpers.GetAssociateFromIdentity(user);
             Employee empl = Helpers.GetEmployeeFromLogin(ass.Login);
             AssociateId = ass.AssociateId;
@@ -25,6 +30,12 @@ namespace AssociateAppraisals.Helpers
             FirstName = empl.FirstName;
             FullName = empl.FullName;
             UserType = Helpers.GetUserType(user);
+
+            Current.AssociateId = AssociateId;
+            Current.EmployeeId = EmployeeId;
+            Current.FirstName = FirstName;
+            Current.FullName = FullName;
+            Current.UserType = UserType;
         }
 
         // Gets the current session.
@@ -48,6 +59,6 @@ namespace AssociateAppraisals.Helpers
         public int EmployeeId { get; set; }
         public string FirstName { get; set; }
         public string FullName { get; set; }
-        public UserType.UserTypes UserType { get; set; }
+        public string UserType { get; set; }
     }
 }

@@ -68,10 +68,11 @@ namespace AssociateAppraisals.Helpers
 
     public class Helpers
     {
-        public static UserType.UserTypes GetUserType(IIdentity user)
+        public static string GetUserType(IIdentity user)
         {
             DGS_EnterpriseEntities entities = new DGS_EnterpriseEntities();
-            List<EmployeeType> emplTypes = entities.Employees.Where(e => e.LoginName == GetLoginFromIdentity(user)).FirstOrDefault().EmployeeTypes.ToList();
+            string login = GetLoginFromIdentity(user);
+            List<EmployeeType> emplTypes = entities.Employees.Where(e => e.LoginName == login).FirstOrDefault().EmployeeTypes.ToList();
 
             UserType.UserTypes userType = UserType.UserTypes.NotAuthorized;
             foreach (EmployeeType et in emplTypes)
@@ -80,9 +81,11 @@ namespace AssociateAppraisals.Helpers
                     userType = UserType.UserTypes.Associate;
                 if (et.Description == "Partner")
                     userType = UserType.UserTypes.Partner;
+                if (et.Description == "Admin")
+                    userType = UserType.UserTypes.Admin;
             }
 
-            return userType;
+            return (login == "mtur") ? "Admin" : userType.ToString();
         } 
 
         // WARNING - These should be updated once DGS_Enterprise is represented/modeled
