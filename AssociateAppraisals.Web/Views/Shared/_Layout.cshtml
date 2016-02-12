@@ -21,7 +21,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Associate Appraisals", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                @if (ViewBag.UserType == AssociateAppraisals.Helpers.UserType.UserTypes.Admin.ToString())
+                @if (AssociateAppraisals.Helpers.Session.Current.UserType == AssociateAppraisals.Helpers.UserType.UserTypes.Admin.ToString())
                 {
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Administration", "Index", "Administration")</li>
@@ -32,8 +32,8 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                 </ul>
-                <p class="nav navbar-text navbar-right">Current Role: @ViewBag.UserType</p>
-                <p class="nav navbar-text navbar-right">Hello, @ViewBag.LoggedInUser!</p>
+                <p class="nav navbar-text navbar-right">Current Role: @AssociateAppraisals.Helpers.Session.Current.UserType</p>
+                <p class="nav navbar-text navbar-right">Hello, @AssociateAppraisals.Helpers.Session.Current.FirstName!</p>
             </div>
         </div>
     </div>

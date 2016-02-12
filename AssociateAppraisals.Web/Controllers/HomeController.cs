@@ -10,6 +10,8 @@ using AssociateAppraisals.Data;
 using AssociateAppraisals.Service;
 using System.Runtime.Caching;
 using System.IO;
+using System.Net;
+using System.Data;
 
 namespace AssociateAppraisals.Web.Controllers
 {
@@ -58,8 +60,59 @@ namespace AssociateAppraisals.Web.Controllers
         // GET: IdentifyPartners - Takes the user to a page where they can identify the partners they worked with most
         public ActionResult IdentifyPartners(int associateId, int appraisalId)
         {
-            return View(entities.AssociateWorks.ToList());
+            // WARNING - We need to be able to identify which appraisal we're talking about so we only fetch work for the appropriate appraisal.
+            return View(entities.AssociateWorks.Where(a => a.AssociateId == associateId).ToList());
         }
+
+        // POST: IdentifyPartners - Updates the AssociateWork table with the partners identified
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult IdentifyPartners(object anything)
+        {
+            /*  WARNING - This is a good way to check for errors in the ModelState
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            foreach (var error in errors)
+            {
+                string poop = error.ToString();
+            }*/
+
+            var poop = Request.Form; // WARNING - This is very very wrong...  But I can't seem to get my form results any other way.
+
+            List<AssociateWork> works = new List<AssociateWork>();
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    string[] workIdArr = poop.GetValues("WorkId");
+                    string[] partnerIdArr = poop.GetValues("Partner");
+
+                    for (int i = 0; i < poop.Count; i++)
+                    {
+                        var evenMorePoop = workIdArr.ElementAt(i);
+                        int slightlyLessPoop = int.Parse(evenMorePoop);
+                        var morePoop = entities.AssociateWorks.Find(slightlyLessPoop);
+                        AssociateWork assWork = morePoop;
+                        assWork.Partner = (string.IsNullOrEmpty(partnerIdArr[i]) ? null : partnerIdArr[i]);
+                        works.Add(assWork);
+                        entities.Entry(assWork).State = System.Data.Entity.EntityState.Modified;
+                    }
+
+                    entities.SaveChanges();
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            catch (DataException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("SAVE_ERR", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+            return View(works);
+        }
+
+
+
+
 
         // GET: AssociatesForReview - Takes the partner to a page where they see a list of all associates they have worked with.
         public ActionResult AssociatesForReview(int appraisalId)

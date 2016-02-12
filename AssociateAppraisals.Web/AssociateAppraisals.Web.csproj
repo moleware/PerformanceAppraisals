@@ -164,6 +164,7 @@
     <Compile Include="ViewModels\AppraisalQuestionViewModel.cs" />
     <Compile Include="ViewModels\AssociateAppraisalViewModel.cs" />
     <Compile Include="ViewModels\AssociatesViewModel.cs" />
+    <Compile Include="ViewModels\PartnerViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\AssociateViewModel.cs" />
     <Compile Include="ViewModels\AppraisalViewModel.cs" />
@@ -176,6 +177,8 @@
     <Content Include="Views\Shared\_ListQuestions.cshtml" />
     <Content Include="Views\Home\AssociatesForReview.cshtml" />
     <Content Include="Views\Home\ReviewAssociate.cshtml" />
+    <Content Include="Views\Home\IdentifyPartners.cshtml" />
+    <Content Include="Views\Shared\_ListPartners.cshtml" />
     <None Include="Views\Shared\_ListAppraisals.cshtml" />
   </ItemGroup>
   <ItemGroup>

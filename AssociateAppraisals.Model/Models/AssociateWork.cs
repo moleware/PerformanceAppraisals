@@ -17,6 +17,8 @@ namespace AssociateAppraisals.Model
         public string ClientMatter { get; set; }
         public string MatterName { get; set; }
         public Nullable<double> Hours { get; set; }
+        public string Partner { get; set; }
+        public string Supervisor { get; set; }
 
         public virtual Associate Associate { get; set; }
     }

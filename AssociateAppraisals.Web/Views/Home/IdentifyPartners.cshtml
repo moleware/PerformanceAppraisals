@@ -1,0 +1,64 @@
+﻿@model IEnumerable<AssociateAppraisals.Model.AssociateWork>
+@{
+    ViewBag.Title = "Identify Partners";
+    var pvm = new PartnerViewModel();
+}
+
+<div class="jumbotron">
+    <h1>@ViewBag.Title</h1>
+    <p class="lead">This page lists all Matters and Hours Worked, as well as all Partners.  Associates use this page to identify the Partners they worked with most over the last year.</p>
+</div>
+
+Matters Worked: @Model.Count()
+@using (Html.BeginForm("IdentifyPartners", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationMessage("SAVE_ERR")
+    <input type="submit" value="Save" />
+    <table class="table table-hover">
+        <tr>
+            <th>
+                Client Name
+            </th>
+            <th>
+                Client Matter
+            </th>
+            <th>
+                Matter Name
+            </th>
+            <th>
+                Hours
+            </th>
+            <th>
+                Partner
+            </th>   
+        </tr>
+    
+        @for(int i=0; i<Model.Count(); i++)
+        {   @Html.HiddenFor(m => m.ElementAt(i).WorkId)
+            @Html.HiddenFor(m => m.ElementAt(i).AssociateId)
+            @Html.HiddenFor(m => m.ElementAt(i).ClientName)
+            @Html.HiddenFor(m => m.ElementAt(i).ClientMatter)
+            @Html.HiddenFor(m => m.ElementAt(i).MatterName)
+            @Html.HiddenFor(m => m.ElementAt(i).Hours)
+            <tr>
+                <td>
+                    @Model.ElementAt(i).ClientName
+                </td>
+                <td>
+                    @Model.ElementAt(i).ClientMatter
+                </td>
+                <td>
+                    @Model.ElementAt(i).MatterName
+                </td>
+                <td>
+                    @Model.ElementAt(i).Hours
+                </td>
+                <td>
+                    @Html.Partial("_ListPartners", pvm)
+                </td>
+            </tr>
+        }
+    </table>
+    <input type="submit" value="Save" />
+}

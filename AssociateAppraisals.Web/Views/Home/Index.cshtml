@@ -8,12 +8,16 @@
     <p class="lead">This is the main interface for Associate Appraisals.</p>
 </div>
 
-@* We need to be able to identify the user's role.  Are they associate? partner? admin? not authorized? *@
-
-<a href="@Url.Action("IdentifyPartners", "Home", new { associateId = ViewBag.AssociateId, appraisalId = ViewBag.AppraisalId })">Identify Partners</a>
-
-@* If the user is a partner, take them directly to the partner home, no button *@
-<a href="@Url.Action("AssociatesForReview", "Home", new { associateId = ViewBag.AssociateId, appraisalId = ViewBag.AppraisalId })">Review Associates</a>
+@* Associates see the Identify Partners button *@
+@if (AssociateAppraisals.Helpers.UserType.UserTypes.Associate.ToString() == AssociateAppraisals.Helpers.Session.Current.UserType)
+{
+    <a href="@Url.Action("IdentifyPartners", "Home", new { associateId = ViewBag.AssociateId, appraisalId = ViewBag.AppraisalId })">Identify Partners</a>
+}
+@* Partners see the Review Associates button *@
+@if (AssociateAppraisals.Helpers.UserType.UserTypes.Partner.ToString() == AssociateAppraisals.Helpers.Session.Current.UserType)
+{
+    <a href="@Url.Action("AssociatesForReview", "Home", new { associateId = ViewBag.AssociateId, appraisalId = ViewBag.AppraisalId })">Review Associates</a>
+}
 
 <div class="row">
     <div class="floating-box">

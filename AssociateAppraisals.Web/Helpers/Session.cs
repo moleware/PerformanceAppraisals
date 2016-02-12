@@ -23,7 +23,10 @@ namespace AssociateAppraisals.Helpers
 
         public void InitializeSession(IIdentity user)
         {
-            Associate ass = Helpers.GetAssociateFromIdentity(user);
+            // WARNING - Uncomment this in prod!!!
+            //   Associate ass = Helpers.GetAssociateFromIdentity(user);
+            Associate ass = Helpers.GetAssociateFromLogin("acov");   
+
             Employee empl = Helpers.GetEmployeeFromLogin(ass.Login);
             AssociateId = ass.AssociateId;
             EmployeeId = empl.EmployeeID;

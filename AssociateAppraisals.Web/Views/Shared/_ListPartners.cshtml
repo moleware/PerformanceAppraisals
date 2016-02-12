@@ -1,0 +1,8 @@
+﻿@model AssociateAppraisals.Web.ViewModels.PartnerViewModel
+
+@*Html.DropDownListFor(e => e.EmployeeID, Model.Partners)*@
+@Html.DropDownList("Partner", Model.Partners, "--- Select one ---")
+@Html.ValidationMessageFor(e => e.EmployeeID)
+
+
+

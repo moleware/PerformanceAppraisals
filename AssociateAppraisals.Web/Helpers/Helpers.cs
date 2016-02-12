@@ -85,7 +85,7 @@ namespace AssociateAppraisals.Helpers
                     userType = UserType.UserTypes.Admin;
             }
 
-            return (login == "mtur") ? "Admin" : userType.ToString();
+            return (login == "mtur") ? UserType.UserTypes.Associate.ToString() : userType.ToString();
         } 
 
         // WARNING - These should be updated once DGS_Enterprise is represented/modeled
