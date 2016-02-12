@@ -54,23 +54,23 @@ namespace AssociateAppraisals.Data.Migrations
                     {
                         AssociateAppraisalId = c.Int(nullable: false, identity: true),
                         AppraisalId = c.Int(nullable: false),
-                        AssociateId = c.Int(nullable: false),
+                        EmployeeId = c.Int(nullable: false),
                         PracticeGroupId = c.Int(),
                     })
                 .PrimaryKey(t => t.AssociateAppraisalId)
                 .ForeignKey("dbo.Appraisal", t => t.AppraisalId, cascadeDelete: true)
-                .ForeignKey("dbo.Associate", t => t.AssociateId, cascadeDelete: true)
+                .ForeignKey("dbo.Associate", t => t.EmployeeId, cascadeDelete: true)
                 .Index(t => t.AppraisalId)
-                .Index(t => t.AssociateId);
+                .Index(t => t.EmployeeId);
             
             CreateTable(
                 "dbo.Associate",
                 c => new
                     {
-                        AssociateId = c.Int(nullable: false, identity: true),
+                        EmployeeId = c.Int(nullable: false, identity: true),
                         Login = c.String(nullable: false, maxLength: 5),
                     })
-                .PrimaryKey(t => t.AssociateId);
+                .PrimaryKey(t => t.EmployeeId);
             
             CreateTable(
                 "dbo.AssociateAppraisalQuestionAnswer",
@@ -98,10 +98,10 @@ namespace AssociateAppraisals.Data.Migrations
         {
             DropForeignKey("dbo.AppraisalQuestion", "AssociateAppraisalQuestionAnswer_AssociateAppraisalQuestionAnswerId", "dbo.AssociateAppraisalQuestionAnswer");
             DropForeignKey("dbo.AppraisalQuestion", "AppraisalId", "dbo.Appraisal");
-            DropForeignKey("dbo.AssociateAppraisal", "AssociateId", "dbo.Associate");
+            DropForeignKey("dbo.AssociateAppraisal", "EmployeeId", "dbo.Associate");
             DropForeignKey("dbo.AppraisalQuestion", "AssociateAppraisal_AssociateAppraisalId", "dbo.AssociateAppraisal");
             DropForeignKey("dbo.AssociateAppraisal", "AppraisalId", "dbo.Appraisal");
-            DropIndex("dbo.AssociateAppraisal", new[] { "AssociateId" });
+            DropIndex("dbo.AssociateAppraisal", new[] { "EmployeeId" });
             DropIndex("dbo.AssociateAppraisal", new[] { "AppraisalId" });
             DropIndex("dbo.AppraisalQuestion", new[] { "AssociateAppraisalQuestionAnswer_AssociateAppraisalQuestionAnswerId" });
             DropIndex("dbo.AppraisalQuestion", new[] { "AssociateAppraisal_AssociateAppraisalId" });

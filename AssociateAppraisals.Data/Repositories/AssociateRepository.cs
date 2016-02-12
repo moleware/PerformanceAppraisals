@@ -12,9 +12,9 @@ namespace AssociateAppraisals.Data.Repositories
     {
         public AssociateRepository(IDbFactory dbFactory) : base(dbFactory) { }
 
-        public Associate GetAssociateById(int associateId)
+        public Associate GetAssociateById(int employeeId)
         {
-            return this.DbContext.Associates.Where(a => a.AssociateId == associateId).FirstOrDefault();
+            return this.DbContext.Associates.Where(a => a.EmployeeId == employeeId).FirstOrDefault();
         }
         public override void Update(Associate entity)
         {
@@ -24,6 +24,6 @@ namespace AssociateAppraisals.Data.Repositories
     }
     public interface IAssociateRepository : IRepository<Associate>
     {
-        Associate GetAssociateById(int associateId);
+        Associate GetAssociateById(int employeeId);
     }
 }

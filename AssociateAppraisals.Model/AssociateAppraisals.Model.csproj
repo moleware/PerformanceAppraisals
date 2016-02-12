@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Partner.cs" />
     <Compile Include="Models\AssociateAppraisal.cs" />
     <Compile Include="Models\AssociateAppraisalQuestionAnswer.cs" />
     <Compile Include="Models\Associate.cs" />

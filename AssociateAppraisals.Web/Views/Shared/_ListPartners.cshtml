@@ -1,8 +1,7 @@
-﻿@model AssociateAppraisals.Web.ViewModels.PartnerViewModel
+﻿@model AssociateAppraisals.Web.ViewModels.AssociateWorkViewModel
 
-@*Html.DropDownListFor(e => e.EmployeeID, Model.Partners)*@
-@Html.DropDownList("Partner", Model.Partners, "--- Select one ---")
-@Html.ValidationMessageFor(e => e.EmployeeID)
+@Html.DropDownList("PartnerEmployeeId", Model.PartnerSelectList, (null == Model.PartnerEmployeeId) ? "--- Select one ---" : Model.PartnerEmployeeId.ToString())
+@Html.ValidationMessageFor(e => e.EmployeeId)
 
 
 

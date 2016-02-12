@@ -1,7 +1,6 @@
-﻿@model IEnumerable<AssociateAppraisals.Model.AssociateWork>
+﻿@model IEnumerable<AssociateAppraisals.Web.ViewModels.AssociateWorkViewModel>
 @{
     ViewBag.Title = "Identify Partners";
-    var pvm = new PartnerViewModel();
 }
 
 <div class="jumbotron">
@@ -35,8 +34,8 @@ Matters Worked: @Model.Count()
         </tr>
     
         @for(int i=0; i<Model.Count(); i++)
-        {   @Html.HiddenFor(m => m.ElementAt(i).WorkId)
-            @Html.HiddenFor(m => m.ElementAt(i).AssociateId)
+        {   @Html.HiddenFor(m => m.ElementAt(i).AssociateWorkId)
+            @Html.HiddenFor(m => m.ElementAt(i).EmployeeId)
             @Html.HiddenFor(m => m.ElementAt(i).ClientName)
             @Html.HiddenFor(m => m.ElementAt(i).ClientMatter)
             @Html.HiddenFor(m => m.ElementAt(i).MatterName)
@@ -55,7 +54,7 @@ Matters Worked: @Model.Count()
                     @Model.ElementAt(i).Hours
                 </td>
                 <td>
-                    @Html.Partial("_ListPartners", pvm)
+                    @Html.Partial("_ListPartners", Model.ElementAt(i))
                 </td>
             </tr>
         }

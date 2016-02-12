@@ -25,16 +25,14 @@ namespace AssociateAppraisals.Helpers
         {
             // WARNING - Uncomment this in prod!!!
             //   Associate ass = Helpers.GetAssociateFromIdentity(user);
-            Associate ass = Helpers.GetAssociateFromLogin("acov");   
+            Associate ass = Helpers.GetAssociateFromLogin("bstr");   
 
             Employee empl = Helpers.GetEmployeeFromLogin(ass.Login);
-            AssociateId = ass.AssociateId;
-            EmployeeId = empl.EmployeeID;
+            EmployeeId = ass.EmployeeId;
             FirstName = empl.FirstName;
             FullName = empl.FullName;
             UserType = Helpers.GetUserType(user);
 
-            Current.AssociateId = AssociateId;
             Current.EmployeeId = EmployeeId;
             Current.FirstName = FirstName;
             Current.FullName = FullName;
@@ -58,10 +56,10 @@ namespace AssociateAppraisals.Helpers
         }
 
         // Custom session properties
-        public int AssociateId { get; set; }
         public int EmployeeId { get; set; }
         public string FirstName { get; set; }
         public string FullName { get; set; }
         public string UserType { get; set; }
+        public int CurrentAppraisalId { get; set; }
     }
 }

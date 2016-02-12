@@ -13,7 +13,7 @@ namespace AssociateAppraisals.Service
     public interface IAssociateAppraisalService
     {
         IEnumerable<AssociateAppraisal> GetAssociateAppraisals();
-        IEnumerable<AssociateAppraisal> GetAssociateAppraisals(int associateId, int appraisalId);
+        IEnumerable<AssociateAppraisal> GetAssociateAppraisals(int employeeId, int appraisalId);
         AssociateAppraisal GetAssociateAppraisal(int associateAppraisalId);
     }
     public class AssociateAppraisalService : IAssociateAppraisalService
@@ -38,9 +38,9 @@ namespace AssociateAppraisals.Service
         {
             return associateAppraisalsRepository.GetAssociateAppraisals();
         }
-        public IEnumerable<AssociateAppraisal> GetAssociateAppraisals(int associateId, int appraisalId)
+        public IEnumerable<AssociateAppraisal> GetAssociateAppraisals(int employeeId, int appraisalId)
         {
-            return associateAppraisalsRepository.GetAssociateAppraisals(associateId, appraisalId);
+            return associateAppraisalsRepository.GetAssociateAppraisals(employeeId, appraisalId);
         }
 
         public AssociateAppraisal GetAssociateAppraisal(int associateAppraisalId)

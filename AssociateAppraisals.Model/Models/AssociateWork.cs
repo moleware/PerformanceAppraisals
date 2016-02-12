@@ -10,16 +10,25 @@ namespace AssociateAppraisals.Model
     public class AssociateWork
     {
         [Key]
-        public int WorkId { get; set; }
+        public int AssociateWorkId { get; set; }
         [ForeignKey("Associate")]
-        public int AssociateId { get; set; }
+        public int EmployeeId { get; set; }
+        [ForeignKey("Appraisal")]
+        public int AppraisalId { get; set; }
         public string ClientName { get; set; }
         public string ClientMatter { get; set; }
         public string MatterName { get; set; }
         public Nullable<double> Hours { get; set; }
-        public string Partner { get; set; }
-        public string Supervisor { get; set; }
+        public Nullable<int> PartnerEmployeeId { get; set; }
+        public Nullable<int> SupervisorEmployeeId { get; set; }
 
+        [ForeignKey("EmployeeId")]
         public virtual Associate Associate { get; set; }
+        [ForeignKey("PartnerEmployeeId")]
+        public virtual Partner Partner { get; set; }
+        [ForeignKey("SupervisorEmployeeId")]
+        public virtual Partner Supervisor { get; set; }
+        [ForeignKey("AppraisalId")]
+        public virtual Appraisal Appraisal { get; set; }
     }
 }

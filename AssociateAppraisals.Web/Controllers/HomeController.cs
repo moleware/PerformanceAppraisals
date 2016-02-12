@@ -44,30 +44,46 @@ namespace AssociateAppraisals.Web.Controllers
             // Initialize our custom session.
             Helpers.Session s = new Helpers.Session(User.Identity);
 
-            // Pass the currently logged in user since I don't have a better way of doing this yet.
-            //    Associate a = Helpers.Helpers.GetAssociateFromIdentity(User.Identity);
-            ViewBag.LoggedInUser = s.FullName;
-            ViewBag.UserType = s.UserType;
-            ViewBag.AssociateId = s.AssociateId;
-            
             // Pass in the current appraisalId because we shouldn't be using this app outside of the February - July window.
-            ViewBag.AppraisalId = entities.Appraisals.Where(aa => aa.ReviewYear == DateTime.Now.Year).FirstOrDefault().AppraisalId;
+            Helpers.Session.Current.CurrentAppraisalId = entities.Appraisals.Where(aa => aa.ReviewYear == DateTime.Now.Year).FirstOrDefault().AppraisalId;
+
+            // If the current user is an Associate, forward them on to the IdentifyPartners page
+            if (Helpers.UserType.UserTypes.Associate.ToString() == Helpers.Session.Current.UserType)
+                return RedirectToAction("IdentifyPartners", "Home", new
+                {
+                    employeeId = AssociateAppraisals.Helpers.Session.Current.EmployeeId,
+                    appraisalId = AssociateAppraisals.Helpers.Session.Current.CurrentAppraisalId
+                });
 
             IEnumerable<Appraisal> appraisals = entities.Appraisals.ToList();
             return View(appraisals);
         }
 
         // GET: IdentifyPartners - Takes the user to a page where they can identify the partners they worked with most
-        public ActionResult IdentifyPartners(int associateId, int appraisalId)
+        public ActionResult IdentifyPartners(int employeeId, int appraisalId)
         {
-            // WARNING - We need to be able to identify which appraisal we're talking about so we only fetch work for the appropriate appraisal.
-            return View(entities.AssociateWorks.Where(a => a.AssociateId == associateId).ToList());
+            // Set a variable in the session to hold our appraisalId
+            //Helpers.Session.Current.AppraisalId = appraisalId;
+
+            // Identify and return only work relevant to this appraisal.
+          //  PartnerViewModel pvm = new PartnerViewModel();
+            List<AssociateWork> assWorks = entities.AssociateWorks.Include("Partner").Where(a => a.EmployeeId == employeeId && a.AppraisalId == appraisalId).ToList();
+            List<AssociateWorkViewModel> assWorkVM = new List<AssociateWorkViewModel>();
+
+            foreach(AssociateWork assWork in assWorks)
+            {
+                int assPartner = -1;
+                int.TryParse(assWork.PartnerEmployeeId.ToString(), out assPartner);
+                assWorkVM.Add(new AssociateWorkViewModel(assWork, assPartner));
+            }
+
+            return View(assWorkVM);
         }
 
         // POST: IdentifyPartners - Updates the AssociateWork table with the partners identified
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult IdentifyPartners(object anything)
+        public ActionResult IdentifyPartners(ICollection<int> AssociateWorkId, ICollection<int> EmployeeId, ICollection<string> ClientName, ICollection<string> ClientMatter, ICollection<string> MatterName, ICollection<float> Hours, ICollection<int> PartnerEmployeeId)
         {
             /*  WARNING - This is a good way to check for errors in the ModelState
             var errors = ModelState.Values.SelectMany(v => v.Errors);
@@ -76,29 +92,21 @@ namespace AssociateAppraisals.Web.Controllers
                 string poop = error.ToString();
             }*/
 
-            var poop = Request.Form; // WARNING - This is very very wrong...  But I can't seem to get my form results any other way.
-
-            List<AssociateWork> works = new List<AssociateWork>();
-
             try
             {
                 if (ModelState.IsValid)
                 {
-                    string[] workIdArr = poop.GetValues("WorkId");
-                    string[] partnerIdArr = poop.GetValues("Partner");
-
-                    for (int i = 0; i < poop.Count; i++)
+                    int count = 0;
+                    foreach (AssociateWork assWork in entities.AssociateWorks)
                     {
-                        var evenMorePoop = workIdArr.ElementAt(i);
-                        int slightlyLessPoop = int.Parse(evenMorePoop);
-                        var morePoop = entities.AssociateWorks.Find(slightlyLessPoop);
-                        AssociateWork assWork = morePoop;
-                        assWork.Partner = (string.IsNullOrEmpty(partnerIdArr[i]) ? null : partnerIdArr[i]);
-                        works.Add(assWork);
-                        entities.Entry(assWork).State = System.Data.Entity.EntityState.Modified;
+                        if (assWork.AssociateWorkId == AssociateWorkId.ElementAt(count))
+                        {
+                            assWork.PartnerEmployeeId = PartnerEmployeeId.ElementAt(count);
+                            count++;
+                            entities.SaveChanges();
+                        }
                     }
-
-                    entities.SaveChanges();
+                    
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -107,11 +115,13 @@ namespace AssociateAppraisals.Web.Controllers
                 //Log the error (uncomment dex variable name and add a line here to write a log.
                 ModelState.AddModelError("SAVE_ERR", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
-            return View(works);
+            catch (Exception ex)
+            {
+                string poop = ex.Message;
+            }
+            return RedirectToAction("Error", "Home");  // WARNING = This isn't right at all, but at least I'll know we err'd
+                                                       // if we're here, the DB did not update.
         }
-
-
-
 
 
         // GET: AssociatesForReview - Takes the partner to a page where they see a list of all associates they have worked with.
@@ -122,13 +132,13 @@ namespace AssociateAppraisals.Web.Controllers
         }
 
         // GET: ReviewAssociate - This page allows a partner to review an associate.  This is the whole point of the application.
-        public ActionResult ReviewAssociate(int associateId, int appraisalId)
+        public ActionResult ReviewAssociate(int employeeId, int appraisalId)
         {
             AssociateAppraisal aa = new AssociateAppraisal();
-            aa.AssociateId = associateId;
+            aa.EmployeeId = employeeId;
             aa.AppraisalId = appraisalId;
             aa.Appraisal = entities.Appraisals.Include("AppraisalQuestion").Where(a => a.AppraisalId == appraisalId).FirstOrDefault();
-            aa.Associate = entities.Associates.Include("AssociateWork").Where(a => a.AssociateId == associateId).FirstOrDefault();
+            aa.Associate = entities.Associates.Include("AssociateWork").Where(a => a.EmployeeId == employeeId).FirstOrDefault();
             return View(aa);
         }
 

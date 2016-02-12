@@ -164,6 +164,7 @@
     <Compile Include="ViewModels\AppraisalQuestionViewModel.cs" />
     <Compile Include="ViewModels\AssociateAppraisalViewModel.cs" />
     <Compile Include="ViewModels\AssociatesViewModel.cs" />
+    <Compile Include="ViewModels\AssociateWorkViewModel.cs" />
     <Compile Include="ViewModels\PartnerViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\AssociateViewModel.cs" />
@@ -179,6 +180,7 @@
     <Content Include="Views\Home\ReviewAssociate.cshtml" />
     <Content Include="Views\Home\IdentifyPartners.cshtml" />
     <Content Include="Views\Shared\_ListPartners.cshtml" />
+    <Content Include="Views\Shared\NotAuthorized.cshtml" />
     <None Include="Views\Shared\_ListAppraisals.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -237,6 +239,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Partner\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -10,8 +10,8 @@
                         Appraisal @Model.AppraisalId - @Model.Appraisal.ReviewYear
                     </h3>
                 </a>
-                <a href="@Url.Action("ListAssociateAppraisals","Administration",Model.AssociateId.ToString())">
-                    <p>Associate: @Model.Associate.AssociateId</p>
+                <a href="@Url.Action("ListAssociateAppraisals","Administration",Model.EmployeeId.ToString())">
+                    <p>Associate: @Model.Associate.EmployeeId</p>
                 </a>
                 }
                 else                // This person will only see their own reviews

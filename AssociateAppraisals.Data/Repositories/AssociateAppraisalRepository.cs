@@ -16,9 +16,9 @@ namespace AssociateAppraisals.Data.Repositories
         {
             return this.DbContext.AssociateAppraisals.Where(a => a.AssociateAppraisalId == associateAppraisalId).FirstOrDefault();
         }
-        public List<AssociateAppraisal> GetAssociateAppraisals(int associateId, int appraisalId)
+        public List<AssociateAppraisal> GetAssociateAppraisals(int employeeId, int appraisalId)
         {
-            return this.DbContext.AssociateAppraisals.Where(a => (a.AssociateId == associateId) && (a.AppraisalId == appraisalId)).ToList();
+            return this.DbContext.AssociateAppraisals.Where(a => (a.EmployeeId == employeeId) && (a.AppraisalId == appraisalId)).ToList();
         }
         public IEnumerable<AssociateAppraisal> GetAssociateAppraisals()
         {
@@ -35,6 +35,6 @@ namespace AssociateAppraisals.Data.Repositories
     {
         AssociateAppraisal GetAssociateAppraisal(int reviewYear);
         IEnumerable<AssociateAppraisal> GetAssociateAppraisals();
-        List<AssociateAppraisal> GetAssociateAppraisals(int associateId, int appraisalId);
+        List<AssociateAppraisal> GetAssociateAppraisals(int employeeId, int appraisalId);
     }
 }

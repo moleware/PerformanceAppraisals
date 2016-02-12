@@ -12,14 +12,13 @@ namespace AssociateAppraisals.Data.Repositories
     {
         public AssociateWorkRepository(IDbFactory dbFactory) : base(dbFactory) { }
 
-        public AssociateWork GetAssociateWork(int workId)
+        public AssociateWork GetAssociateWork(int AssociateWorkId)
         {
-            return this.DbContext.AssociateWorks.Where(a => a.WorkId == workId).FirstOrDefault();
+            return this.DbContext.AssociateWorks.Where(a => a.AssociateWorkId == AssociateWorkId).FirstOrDefault();
         }
-        public List<AssociateWork> GetAssociateWork(int associateId, int appraisalId)
+        public List<AssociateWork> GetAssociateWork(int employeeId, int appraisalId)
         {
-            // WARNING - THIS IS NOT COMPLETE - Needs to be able to identify the year the work was performed
-            return this.DbContext.AssociateWorks.Where(a => a.AssociateId == associateId).ToList();
+            return this.DbContext.AssociateWorks.Where(a => a.EmployeeId == employeeId && a.AppraisalId == appraisalId).ToList();
         }
         public override void Update(AssociateWork entity)
         {
@@ -28,7 +27,7 @@ namespace AssociateAppraisals.Data.Repositories
     }
     public interface IAssociateWorkRepository : IRepository<AssociateWork>
     {
-        AssociateWork GetAssociateWork(int workId);
-        List<AssociateWork> GetAssociateWork(int associateId, int appraisalId);
+        AssociateWork GetAssociateWork(int AssociateWorkId);
+        List<AssociateWork> GetAssociateWork(int employeeId, int appraisalId);
     }
 }

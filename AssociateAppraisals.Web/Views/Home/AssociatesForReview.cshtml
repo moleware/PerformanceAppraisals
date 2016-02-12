@@ -11,7 +11,7 @@
 <div class="row">
     @foreach (var item in Model)       // This is where we display each appraisal the associate has particpated in
     {
-        <a href="@Url.Action("ReviewAssociate","Home", new { associateId = item.AssociateId })">
+        <a href="@Url.Action("ReviewAssociate","Home", new { employeeId = item.EmployeeId })">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     @AssociateAppraisals.Helpers.Helpers.GetAssociateFullNameFromLogin(item.Associate.Login)

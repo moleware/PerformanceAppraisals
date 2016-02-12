@@ -15,7 +15,7 @@ namespace AssociateAppraisals.Data
         {
             ToTable("AssociateAppraisal");
             Property(a => a.AppraisalId).IsRequired();
-            Property(a => a.AssociateId).IsRequired();
+            Property(a => a.EmployeeId).IsRequired();
             Property(a => a.PracticeGroupId).IsOptional();
         }
     }

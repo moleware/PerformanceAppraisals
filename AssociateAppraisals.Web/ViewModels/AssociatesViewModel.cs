@@ -22,6 +22,5 @@ namespace AssociateAppraisals.Web.ViewModels
         {
             get { return _associates.AsEnumerable(); }
         }
-
     }
 }

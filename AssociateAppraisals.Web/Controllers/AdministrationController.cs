@@ -29,12 +29,12 @@ namespace AssociateAppraisals.Web.Controllers
         }
 
         // GET: ListAssociateAppraisals - Associate Appraisal list
-        public ActionResult ListAssociateAppraisals(int associateId, int appraisalId)
+        public ActionResult ListAssociateAppraisals(int employeeId, int appraisalId)
         {
             //       IEnumerable<AssociateAppraisalViewModel> viewModelAssociateAppraisals;
             //       IEnumerable<AssociateAppraisal> associateAppraisals;
 
-            //       associateAppraisals = associateAppraisalService.GetAssociateAppraisals(associateId, appraisalId);
+            //       associateAppraisals = associateAppraisalService.GetAssociateAppraisals(employeeId, appraisalId);
 
             //viewModelAssociateAppraisals = Mapper.Map<IEnumerable<AssociateAppraisal>, IEnumerable<AssociateAppraisalViewModel>>(associateAppraisals);
             // return View(viewModelAssociateAppraisals);

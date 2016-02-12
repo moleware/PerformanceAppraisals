@@ -110,7 +110,14 @@ namespace AssociateAppraisals.Helpers
         {
             return GetAssociateFromLogin(GetLoginFromIdentity(i));
         }
-        internal static Employee GetEmployeeFromLogin(string login)
+        public static Employee GetEmployeeFromEmployeeId(int employeeId)
+        {
+            using (DGS_EnterpriseEntities dbDGS = new DGS_EnterpriseEntities())
+            {
+                return dbDGS.Employees.Where(e => e.EmployeeID == employeeId).FirstOrDefault();
+            }
+        }
+        public static Employee GetEmployeeFromLogin(string login)
         {
             using (DGS_EnterpriseEntities dbDGS = new DGS_EnterpriseEntities())
             {

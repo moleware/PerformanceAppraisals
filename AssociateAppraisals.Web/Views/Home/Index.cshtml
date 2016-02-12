@@ -11,12 +11,14 @@
 @* Associates see the Identify Partners button *@
 @if (AssociateAppraisals.Helpers.UserType.UserTypes.Associate.ToString() == AssociateAppraisals.Helpers.Session.Current.UserType)
 {
-    <a href="@Url.Action("IdentifyPartners", "Home", new { associateId = ViewBag.AssociateId, appraisalId = ViewBag.AppraisalId })">Identify Partners</a>
+    <a href="@Url.Action("IdentifyPartners", "Home", new {
+            employeeId = AssociateAppraisals.Helpers.Session.Current.EmployeeId,
+            appraisalId = AssociateAppraisals.Helpers.Session.Current.CurrentAppraisalId })">Identify Partners</a>
 }
 @* Partners see the Review Associates button *@
 @if (AssociateAppraisals.Helpers.UserType.UserTypes.Partner.ToString() == AssociateAppraisals.Helpers.Session.Current.UserType)
 {
-    <a href="@Url.Action("AssociatesForReview", "Home", new { associateId = ViewBag.AssociateId, appraisalId = ViewBag.AppraisalId })">Review Associates</a>
+    <a href="@Url.Action("AssociatesForReview", "Home", new { employeeId = ViewBag.EmployeeId, appraisalId = ViewBag.AppraisalId })">Review Associates</a>
 }
 
 <div class="row">

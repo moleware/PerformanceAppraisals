@@ -1,35 +1,56 @@
 ﻿using System.Collections.Generic;
-using DGS_Enterprise.Model;
+using AssociateAppraisals.Model;
 using System.Web.Mvc;
-using DGS_Enterprise.Data;
+using AssociateAppraisals.Data;
 using System.Linq;
 
 
 namespace AssociateAppraisals.Web.ViewModels
 {
-    public class PartnerViewModel : Employee
+    public class PartnerViewModel : Partner
     {
-        private readonly List<Employee> _partnerEmployees;
-        private DGS_EnterpriseEntities entities = new DGS_EnterpriseEntities();
+        private List<Partner> _partners;
+        private int _selectedPartner;  // This is used for our drop down of partners
+        private AssociateAppraisalsEntities entities = new AssociateAppraisalsEntities();
 
         public PartnerViewModel()
         {
-            // Set up variables because Razor gets upset when you use methods...
-            string partnerStr = Helpers.UserType.UserTypes.Partner.ToString();
-            int emplTypeId = entities.EmployeeTypes.Where(e => e.Description == partnerStr).FirstOrDefault().EmployeeTypeID;
+            // Initialize _selectedPartner to -1 so we know it has not been assigned
+            _selectedPartner = -1;
 
-            // This SHOULD fetch us a list of all active partners in DGS.
-            _partnerEmployees = entities.Employees
-                .Include("EmployeeTypes")
-                .Where(e =>
-                    (e.IsActive != false) && 
-                    (e.EmployeeTypes.Select(et => et.EmployeeTypeID).Contains(emplTypeId)))     
-                .ToList();
+            // Fetch all partners and add their first names to the entity for access in our drop down
+            _partners = entities.Partners.ToList();
+        /*    foreach (Partner p in _partners)
+            {
+                p.FullName = Helpers.Helpers.GetAssociateFullNameFromLogin(p.Login);
+            }*/
         }
 
         public IEnumerable<SelectListItem> Partners
         {
-            get { return new SelectList(_partnerEmployees, "LoginName", "FullName", "--- Select One ---"); }
+            get
+            {
+                // One last try to populate partner names
+                foreach (Partner p in _partners)
+                {
+                    p.FullName = Helpers.Helpers.GetAssociateFullNameFromLogin(p.Login);
+                }
+                return new SelectList(_partners, "EmployeeId", "FullName", (-1 == _selectedPartner) ? "--- Select One ---" : _selectedPartner.ToString());
+            }
+        }
+
+        public List<Partner> PartnersList
+        {
+            set { _partners = value; }
+        }
+
+        public int SelectedPartner
+        {
+            get { return _selectedPartner; }
+            set
+            {
+                _selectedPartner = value;
+            }
         }
     }
 }

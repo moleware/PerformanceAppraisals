@@ -43,6 +43,8 @@
     <Compile Include="AssociateAppraisalQuestionAnswerService.cs" />
     <Compile Include="AppraisalQuestionService.cs" />
     <Compile Include="AssociateAppraisalService.cs" />
+    <Compile Include="PartnerService.cs" />
+    <Compile Include="AssociateWorkService.cs" />
     <Compile Include="AssociateService.cs" />
     <Compile Include="AppraisalService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

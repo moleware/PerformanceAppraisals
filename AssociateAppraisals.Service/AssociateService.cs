@@ -13,7 +13,7 @@ namespace AssociateAppraisals.Service
     public interface IAssociateService
     {
         IEnumerable<Associate> GetAssociates();
-        Associate GetAssociate(int associateId);
+        Associate GetAssociate(int employeeId);
     }
     public class AssociateService : IAssociateService
     {
@@ -37,22 +37,11 @@ namespace AssociateAppraisals.Service
             return associates;
         }
 
-        public Associate GetAssociate(int associateId)
+        public Associate GetAssociate(int employeeId)
         {
-            var associate = associatesRepository.GetById(associateId);
+            var associate = associatesRepository.GetById(employeeId);
             return associate;
         }
-
-        public void CreateAppraisal(Associate associate)
-        {
-            associatesRepository.Add(associate);
-        }
-
-        public void SaveAssociate()
-        {
-            unitOfWork.Commit();
-        }
-
         #endregion
 
     }
